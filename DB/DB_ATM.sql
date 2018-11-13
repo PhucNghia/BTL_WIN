@@ -19,7 +19,7 @@ create table Config(
 ---------------------------------
 create table Customer(
 	CustomerID varchar(30) primary key,
-	Name varchar(50),
+	Name nvarchar(50),
 	Email varchar(30),
 	Phone char(15),
 	Address nvarchar(100)
@@ -108,7 +108,7 @@ create table Log(
 
 
 ---------------------------------
-insert into Config values('CONFIG001', '13/11/2018', 50000, 17500000, 5);
+insert into Config values('CONFIG001', 50000, 17500000, '2018/11/13', 5);
 ---------------------------------
 insert into Customer values('1041260143', N'Nguyễn Hoàng Nam Anh', 'namanh@gmail.com', '0382681682', N'Vĩnh Phúc');
 insert into Customer values('1041260144', N'Hoàng Văn Hậu', 'hoanghau@gmail.com', '0382681682', N'Hải Dương');
@@ -124,11 +124,11 @@ insert into Account values('ACC002', '1041260144', '1234567892', 'OD001', 'WDL00
 insert into Account values('ACC003', '1041260145', '1234567893', 'OD001', 'WDL001', 3000000);
 insert into Account values('ACC004', '1041260146', '1234567894', 'OD001', 'WDL001', 4000000);
 ---------------------------------
-insert into Card values('1234567891011', 'normal', 'ACC001', '111111', '11/11/2015', '11/11/2019');
-insert into Card values('1234567891012', 'normal', 'ACC002', '222222', '12/11/2015', '12/11/2019');
-insert into Card values('1234567891013', 'block', 'ACC003', '333333', '13/11/2015', '13/11/2019');
-insert into Card values('1234567891014', 'normal', 'ACC004', '444444', '14/11/2015', '14/11/2019');
----------------------------------
+insert into Card values('1234567891011', 'normal', 'ACC001', '111111', '2015/11/11', '2019/11/11', 3);
+insert into Card values('1234567891012', 'normal', 'ACC002', '222222', '2015/11/12', '2019/11/12', 3);
+insert into Card values('1234567891013', 'block', 'ACC003', '333333', '2015/11/13', '2019/11/13', 3);
+insert into Card values('1234567891014', 'normal', 'ACC004', '444444', '2015/11/14', '2019/11/14', 3);
+--------------------------------
 insert into Money values('MONEY001', 10000);
 insert into Money values('MONEY002', 20000);
 insert into Money values('MONEY003', 50000);
@@ -166,11 +166,10 @@ insert into LogType values('LT002', 'Transfer');
 insert into LogType values('LT003', 'Check balance');
 insert into LogType values('LT004', 'Change PIN');
 ---------------------------------
-insert into Log values('LOG001', 'LT001', 'ATM001', '1234567891011', '13/11/2018', 500000, 'Success', '');
-insert into Log values('LOG002', 'LT002', 'ATM001', '1234567891011', '13/11/2018', 1000000, 'Success', '1234567891012');
-insert into Log values('LOG001', 'LT003', 'ATM001', '1234567891013', '13/11/2018', 1000, 'Success', '');
-insert into Log values('LOG001', 'LT004', 'ATM001', '1234567891011', '13/11/2018', null, 'Success', '');
-
+insert into Log values('LOG001', 'LT001', 'ATM001', '1234567891011', '2018/11/13', 500000, 'Success', '');
+insert into Log values('LOG002', 'LT002', 'ATM001', '1234567891011', '2018/11/13', 1000000, 'Success', '1234567891012');
+insert into Log values('LOG003', 'LT003', 'ATM001', '1234567891013', '2018/11/13', 1000, 'Success', '');
+insert into Log values('LOG004', 'LT004', 'ATM001', '1234567891011', '2018/11/13', null, 'Success', '');
 
 --------------------------------
 select * from Config
