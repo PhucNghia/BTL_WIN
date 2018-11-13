@@ -19,7 +19,7 @@ create table Config(
 ---------------------------------
 create table Customer(
 	CustomerID varchar(30) primary key,
-	Name varchar(50),
+	Name nvarchar(50),
 	Email varchar(30),
 	Phone char(15),
 	Address nvarchar(100)
