@@ -18,8 +18,8 @@ namespace DTO
 
         public LogTypeDTO(string logTypeID, string description)
         {
-            this.logTypeID = logTypeID;
-            this.description = description;
+            this.LogTypeID = logTypeID;
+            this.Description = description;
         }
 
         public string LogTypeID { get => logTypeID; set => logTypeID = value; }

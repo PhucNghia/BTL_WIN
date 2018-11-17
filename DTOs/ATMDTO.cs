@@ -19,12 +19,12 @@ namespace DTO
 
         public ATMDTO(string atmID, string branch, string address)
         {
-            this.aTMID = atmID;
-            this.branch = branch;
-            this.address = address;
+            this.ATMID = atmID;
+            this.Branch = branch;
+            this.Address = address;
         }
 
-        public string AtmID { get => aTMID; set => aTMID = value; }
+        public string ATMID { get => aTMID; set => aTMID = value; }
         public string Branch { get => branch; set => branch = value; }
         public string Address { get => address; set => address = value; }
     }

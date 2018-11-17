@@ -20,10 +20,10 @@ namespace DTO
 
         public StockDTO(string stockID, string moneyID, string aTMID, int quantity)
         {
-            this.stockID = stockID;
-            this.moneyID = moneyID;
-            this.aTMID = aTMID;
-            this.quantity = quantity;
+            this.StockID = stockID;
+            this.MoneyID = moneyID;
+            this.ATMID = aTMID;
+            this.Quantity = quantity;
         }
 
         public string StockID { get => stockID; set => stockID = value; }

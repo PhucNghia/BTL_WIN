@@ -22,17 +22,17 @@ namespace DTO
 
         }
 
-        public LogDTO(string logID, string logTypeID, string aTMID, string cardNo, string logDate, decimal amount, 
-            string details, string cardNoTo)
+        public LogDTO(string logID, string logTypeID, string aTMID, string cardNo, string logDate, 
+            decimal amount, string details, string cardNoTo)
         {
-            this.logID = logID;
-            this.logTypeID = logTypeID;
-            this.aTMID = aTMID;
-            this.cardNo = cardNo;
-            this.logDate = logDate;
-            this.amount = amount;
-            this.details = details;
-            this.cardNoTo = cardNoTo;
+            this.LogID = logID;
+            this.LogTypeID = logTypeID;
+            this.ATMID = aTMID;
+            this.CardNo = cardNo;
+            this.LogDate = logDate;
+            this.Amount = amount;
+            this.Details = details;
+            this.CardNoTo = cardNoTo;
         }
 
         public string LogID { get => logID; set => logID = value; }

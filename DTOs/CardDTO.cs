@@ -24,13 +24,13 @@ namespace DTO
         public CardDTO(string cardNo, string status, string accountID, string pIN, string startDate, 
             string expiredDate, int attempt)
         {
-            this.cardNo = cardNo;
-            this.status = status;
-            this.accountID = accountID;
-            this.pIN = pIN;
-            this.startDate = startDate;
-            this.expiredDate = expiredDate;
-            this.attempt = attempt;
+            this.CardNo = cardNo;
+            this.Status = status;
+            this.AccountID = accountID;
+            this.PIN = pIN;
+            this.StartDate = startDate;
+            this.ExpiredDate = expiredDate;
+            this.Attempt = attempt;
         }
 
         public string CardNo { get => cardNo; set => cardNo = value; }
