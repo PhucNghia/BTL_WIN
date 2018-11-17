@@ -11,17 +11,17 @@ go
 ---------------------------------
 create table Config(
 	ConfigID varchar(30) primary key,
+	DateModified date,
 	MinWithDraw decimal,
 	MaxWithDraw decimal,
-	DateModified date,
 	NumPerPage int
 );
 ---------------------------------
 create table Customer(
 	CustomerID varchar(30) primary key,
 	Name nvarchar(50),
-	Email varchar(30),
 	Phone char(15),
+	Email varchar(30),
 	Address nvarchar(100)
 );
 ---------------------------------
@@ -108,12 +108,12 @@ create table Log(
 
 
 ---------------------------------
-insert into Config values('CONFIG001', 50000, 17500000, '2018/11/13', 5);
+insert into Config values('CONFIG001', '2018/11/13', 50000, 17500000, 5);
 ---------------------------------
-insert into Customer values('1041260143', N'Nguyễn Hoàng Nam Anh', 'namanh@gmail.com', '0382681682', N'Vĩnh Phúc');
-insert into Customer values('1041260144', N'Hoàng Văn Hậu', 'hoanghau@gmail.com', '0382681682', N'Hải Dương');
-insert into Customer values('1041260145', N'Phúc Ngọc Nghĩa', 'ngocnghia@gmail.com', '0382305339', N'Tuyên Quang');
-insert into Customer values('1041260146', N'Nguyễn Thị Sim', 'nguyensim@gmail.com', '0382681682', N'Lào Cai');
+insert into Customer values('1041260143', N'Nguyễn Hoàng Nam Anh', '0382681682', 'namanh@gmail.com', N'Vĩnh Phúc');
+insert into Customer values('1041260144', N'Hoàng Văn Hậu', '0382681682', 'hoanghau@gmail.com', N'Hải Dương');
+insert into Customer values('1041260145', N'Phúc Ngọc Nghĩa', '0382305339', 'ngocnghia@gmail.com', N'Tuyên Quang');
+insert into Customer values('1041260146', N'Nguyễn Thị Sim', '0382681682', 'nguyensim@gmail.com', N'Lào Cai');
 ---------------------------------
 insert into OverDraft values('OD001', 2000000);
 ---------------------------------
