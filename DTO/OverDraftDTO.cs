@@ -18,11 +18,34 @@ namespace DTO
 
         public OverDraftDTO(string oDID, decimal value)
         {
-            this.oDID = oDID;
-            this.value = value;
+            this.ODID = oDID;
+            this.Value = value;
         }
 
-        public string ODID { get => oDID; set => oDID = value; }
-        public decimal Value { get => value; set => this.value = value; }
+        public string ODID
+        {
+            get
+            {
+                return oDID;
+            }
+
+            set
+            {
+                oDID = value;
+            }
+        }
+
+        public decimal Value
+        {
+            get
+            {
+                return value;
+            }
+
+            set
+            {
+                this.value = value;
+            }
+        }
     }
 }

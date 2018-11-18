@@ -15,11 +15,6 @@ namespace DTO
         private string wDID;
         private decimal balance;
 
-        public AccountDTO()
-        {
-
-        }
-
         public AccountDTO(string accountID, string custID, string accountNo, string oDID, string wDID, int balance)
         {
             this.AccountID = accountID;
@@ -30,11 +25,87 @@ namespace DTO
             this.Balance = balance;
         }
 
-        public string AccountID { get => accountID; set => accountID = value; }
-        public string CustID { get => custID; set => custID = value; }
-        public string AccountNo { get => accountNo; set => accountNo = value; }
-        public string ODID { get => oDID; set => oDID = value; }
-        public string WDID { get => wDID; set => wDID = value; }
-        public decimal Balance { get => balance; set => balance = value; }
+        public string CustID
+        {
+            get
+            {
+                return custID;
+            }
+
+            set
+            {
+                custID = value;
+            }
+        }
+
+        public string AccountNo
+        {
+            get
+            {
+                return accountNo;
+            }
+
+            set
+            {
+                accountNo = value;
+            }
+        }
+
+        public string ODID
+        {
+            get
+            {
+                return oDID;
+            }
+
+            set
+            {
+                oDID = value;
+            }
+        }
+
+        public string WDID
+        {
+            get
+            {
+                return wDID;
+            }
+
+            set
+            {
+                wDID = value;
+            }
+        }
+
+        public decimal Balance
+        {
+            get
+            {
+                return balance;
+            }
+
+            set
+            {
+                balance = value;
+            }
+        }
+
+        public string AccountID
+        {
+            get
+            {
+                return accountID;
+            }
+
+            set
+            {
+                accountID = value;
+            }
+        }
+
+        public AccountDTO()
+        {
+
+        }
     }
 }

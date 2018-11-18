@@ -11,6 +11,32 @@ namespace DTO
         private string wDID;
         private decimal value;
 
+        public string WDID
+        {
+            get
+            {
+                return wDID;
+            }
+
+            set
+            {
+                wDID = value;
+            }
+        }
+
+        public decimal Value
+        {
+            get
+            {
+                return value;
+            }
+
+            set
+            {
+                this.value = value;
+            }
+        }
+
         public WithDrawLimitDTO()
         {
 
@@ -18,11 +44,10 @@ namespace DTO
 
         public WithDrawLimitDTO(string wDID, decimal value)
         {
-            this.wDID = wDID;
-            this.value = value;
+            this.WDID = wDID;
+            this.Value = value;
         }
 
-        public string WDID { get => wDID; set => wDID = value; }
-        public decimal Value { get => value; set => this.value = value; }
+      
     }
 }

@@ -11,6 +11,32 @@ namespace DTO
         private string logTypeID;
         private string description;
 
+        public string LogTypeID
+        {
+            get
+            {
+                return logTypeID;
+            }
+
+            set
+            {
+                logTypeID = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
         public LogTypeDTO()
         {
 
@@ -18,11 +44,9 @@ namespace DTO
 
         public LogTypeDTO(string logTypeID, string description)
         {
-            this.logTypeID = logTypeID;
-            this.description = description;
+            this.LogTypeID = logTypeID;
+            this.Description = description;
         }
 
-        public string LogTypeID { get => logTypeID; set => logTypeID = value; }
-        public string Description { get => description; set => description = value; }
     }
 }

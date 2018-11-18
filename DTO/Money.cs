@@ -22,7 +22,30 @@ namespace DTO
             this.MoneyValue = moneyValue;
         }
 
-        public string MoneyID { get => moneyID; set => moneyID = value; }
-        public decimal MoneyValue { get => moneyValue; set => moneyValue = value; }
+        public string MoneyID
+        {
+            get
+            {
+                return moneyID;
+            }
+
+            set
+            {
+                moneyID = value;
+            }
+        }
+
+        public decimal MoneyValue
+        {
+            get
+            {
+                return moneyValue;
+            }
+
+            set
+            {
+                moneyValue = value;
+            }
+        }
     }
 }

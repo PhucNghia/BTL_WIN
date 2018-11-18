@@ -14,6 +14,71 @@ namespace DTO
         private decimal maxWithDraw;
         private int numPerPage;
 
+        public string ConfigID
+        {
+            get
+            {
+                return configID;
+            }
+
+            set
+            {
+                configID = value;
+            }
+        }
+
+        public string DateModified
+        {
+            get
+            {
+                return dateModified;
+            }
+
+            set
+            {
+                dateModified = value;
+            }
+        }
+
+        public decimal MinWithDraw
+        {
+            get
+            {
+                return minWithDraw;
+            }
+
+            set
+            {
+                minWithDraw = value;
+            }
+        }
+
+        public decimal MaxWithDraw
+        {
+            get
+            {
+                return maxWithDraw;
+            }
+
+            set
+            {
+                maxWithDraw = value;
+            }
+        }
+
+        public int NumPerPage
+        {
+            get
+            {
+                return numPerPage;
+            }
+
+            set
+            {
+                numPerPage = value;
+            }
+        }
+
         public ConfigDTO()
         {
 
@@ -28,10 +93,6 @@ namespace DTO
             this.NumPerPage = numPerPage;
         }
 
-        public string ConfigID { get => configID; set => configID = value; }
-        public string DateModified { get => dateModified; set => dateModified = value; }
-        public decimal MinWithDraw { get => minWithDraw; set => minWithDraw = value; }
-        public decimal MaxWithDraw { get => maxWithDraw; set => maxWithDraw = value; }
-        public int NumPerPage { get => numPerPage; set => numPerPage = value; }
+       
     }
 }
