@@ -14,6 +14,71 @@ namespace DTO
         private string email;
         private string address;
 
+        public string CustomerID
+        {
+            get
+            {
+                return customerID;
+            }
+
+            set
+            {
+                customerID = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+
+        public string Phone
+        {
+            get
+            {
+                return phone;
+            }
+
+            set
+            {
+                phone = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
         public CustomerDTO(string customerID, string name, string phone, string email, string address)
         {
             this.CustomerID = customerID;
@@ -23,10 +88,6 @@ namespace DTO
             this.Address = address;
         }
 
-        public string CustomerID { get => customerID; set => customerID = value; }
-        public string Name { get => name; set => name = value; }
-        public string Phone { get => phone; set => phone = value; }
-        public string Email { get => email; set => email = value; }
-        public string Address { get => address; set => address = value; }
+        
     }
 }

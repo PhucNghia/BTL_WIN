@@ -17,6 +17,110 @@ namespace DTO
         private string details;
         private string cardNoTo;
 
+        public string LogID
+        {
+            get
+            {
+                return logID;
+            }
+
+            set
+            {
+                logID = value;
+            }
+        }
+
+        public string LogTypeID
+        {
+            get
+            {
+                return logTypeID;
+            }
+
+            set
+            {
+                logTypeID = value;
+            }
+        }
+
+        public string ATMID
+        {
+            get
+            {
+                return aTMID;
+            }
+
+            set
+            {
+                aTMID = value;
+            }
+        }
+
+        public string CardNo
+        {
+            get
+            {
+                return cardNo;
+            }
+
+            set
+            {
+                cardNo = value;
+            }
+        }
+
+        public string LogDate
+        {
+            get
+            {
+                return logDate;
+            }
+
+            set
+            {
+                logDate = value;
+            }
+        }
+
+        public decimal Amount
+        {
+            get
+            {
+                return amount;
+            }
+
+            set
+            {
+                amount = value;
+            }
+        }
+
+        public string Details
+        {
+            get
+            {
+                return details;
+            }
+
+            set
+            {
+                details = value;
+            }
+        }
+
+        public string CardNoTo
+        {
+            get
+            {
+                return cardNoTo;
+            }
+
+            set
+            {
+                cardNoTo = value;
+            }
+        }
+
         public LogDTO()
         {
 
@@ -25,23 +129,16 @@ namespace DTO
         public LogDTO(string logID, string logTypeID, string aTMID, string cardNo, string logDate, decimal amount, 
             string details, string cardNoTo)
         {
-            this.logID = logID;
-            this.logTypeID = logTypeID;
-            this.aTMID = aTMID;
-            this.cardNo = cardNo;
-            this.logDate = logDate;
-            this.amount = amount;
-            this.details = details;
-            this.cardNoTo = cardNoTo;
+            this.LogID = logID;
+            this.LogTypeID = logTypeID;
+            this.ATMID = aTMID;
+            this.CardNo = cardNo;
+            this.LogDate = logDate;
+            this.Amount = amount;
+            this.Details = details;
+            this.CardNoTo = cardNoTo;
         }
 
-        public string LogID { get => logID; set => logID = value; }
-        public string LogTypeID { get => logTypeID; set => logTypeID = value; }
-        public string ATMID { get => aTMID; set => aTMID = value; }
-        public string CardNo { get => cardNo; set => cardNo = value; }
-        public string LogDate { get => logDate; set => logDate = value; }
-        public decimal Amount { get => amount; set => amount = value; }
-        public string Details { get => details; set => details = value; }
-        public string CardNoTo { get => cardNoTo; set => cardNoTo = value; }
+       
     }
 }
