@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class CardDTO
+    public class CardDTO
     {
         private string cardNo;
         private string status;

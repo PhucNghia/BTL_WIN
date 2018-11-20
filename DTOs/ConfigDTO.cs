@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ConfigDTO
+    public class ConfigDTO
     {
         private string configID;
         private string dateModified;

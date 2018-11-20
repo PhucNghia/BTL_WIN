@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ATMDTO
+    public class ATMDTO
     {
         private string aTMID;
         private string branch;

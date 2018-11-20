@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class LogDTO
+    public class LogDTO
     {
         private string logID;
         private string logTypeID;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class StockDTO
+    public class StockDTO
     {
         private string stockID;
         private string moneyID;
