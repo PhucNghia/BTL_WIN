@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class Money
+    public class Money
     {
         private string moneyID;
         private decimal moneyValue;

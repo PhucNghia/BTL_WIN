@@ -6,32 +6,21 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class OverDraftDTO
+    public class WithDrawLimitDTO
     {
-        private string oDID;
+        private string wDID;
         private decimal value;
 
-        public OverDraftDTO()
-        {
-
-        }
-
-        public OverDraftDTO(string oDID, decimal value)
-        {
-            this.ODID = oDID;
-            this.Value = value;
-        }
-
-        public string ODID
+        public string WDID
         {
             get
             {
-                return oDID;
+                return wDID;
             }
 
             set
             {
-                oDID = value;
+                wDID = value;
             }
         }
 
@@ -47,5 +36,18 @@ namespace DTO
                 this.value = value;
             }
         }
+
+        public WithDrawLimitDTO()
+        {
+
+        }
+
+        public WithDrawLimitDTO(string wDID, decimal value)
+        {
+            this.WDID = wDID;
+            this.Value = value;
+        }
+
+      
     }
 }
