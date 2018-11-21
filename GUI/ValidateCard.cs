@@ -35,14 +35,9 @@ namespace GUI
             return txtCardNo.Text;
         }
 
-        public Label getlblCheckMa()
+        public void setTextBoxCardNo(string number)
         {
-            return lbCheckMaThe;
-        }
-
-        public Label getlblExpiredDate()
-        {
-            return lblExpiredDate;
+            txtCardNo.Text += number;
         }
 
         public void clearTextBoxCardNo()
@@ -50,9 +45,14 @@ namespace GUI
             txtCardNo.Text = "";
         }
 
-        public void setTextBoxCardNo(string number)
+        public Label getlblChecCardNo()
         {
-            txtCardNo.Text += number;
+            return lblCheckCardNo;
+        }
+
+        public Label getlblExpiredDate()
+        {
+            return lblExpiredDate;
         }
     }
 }

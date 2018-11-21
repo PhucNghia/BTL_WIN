@@ -30,7 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbCheckMaThe = new System.Windows.Forms.Label();
+            this.lblCheckCardNo = new System.Windows.Forms.Label();
             this.txtCardNo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -65,19 +65,19 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Vui lòng nhập mã thẻ của bạn";
             // 
-            // lbCheckMaThe
+            // lblCheckCardNo
             // 
-            this.lbCheckMaThe.AutoSize = true;
-            this.lbCheckMaThe.BackColor = System.Drawing.Color.Transparent;
-            this.lbCheckMaThe.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckMaThe.ForeColor = System.Drawing.Color.Black;
-            this.lbCheckMaThe.Location = new System.Drawing.Point(310, 364);
-            this.lbCheckMaThe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCheckMaThe.Name = "lbCheckMaThe";
-            this.lbCheckMaThe.Size = new System.Drawing.Size(356, 31);
-            this.lbCheckMaThe.TabIndex = 5;
-            this.lbCheckMaThe.Text = "Mã thẻ của bạn chưa đúng";
-            this.lbCheckMaThe.Visible = false;
+            this.lblCheckCardNo.AutoSize = true;
+            this.lblCheckCardNo.BackColor = System.Drawing.Color.Transparent;
+            this.lblCheckCardNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckCardNo.ForeColor = System.Drawing.Color.Black;
+            this.lblCheckCardNo.Location = new System.Drawing.Point(310, 364);
+            this.lblCheckCardNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCheckCardNo.Name = "lblCheckCardNo";
+            this.lblCheckCardNo.Size = new System.Drawing.Size(356, 31);
+            this.lblCheckCardNo.TabIndex = 5;
+            this.lblCheckCardNo.Text = "Mã thẻ của bạn chưa đúng";
+            this.lblCheckCardNo.Visible = false;
             // 
             // txtCardNo
             // 
@@ -133,7 +133,7 @@
             this.Controls.Add(this.lblExpiredDate);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lbCheckMaThe);
+            this.Controls.Add(this.lblCheckCardNo);
             this.Controls.Add(this.txtCardNo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -150,7 +150,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbCheckMaThe;
+        private System.Windows.Forms.Label lblCheckCardNo;
         private System.Windows.Forms.TextBox txtCardNo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

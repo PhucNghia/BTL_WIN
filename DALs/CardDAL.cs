@@ -13,6 +13,8 @@ namespace DALs
     public class CardDAL
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString());
+
+        // Validate CardNo
         public bool checkCardNo(string cardNo)
         {
             try
@@ -71,13 +73,14 @@ namespace DALs
             }
         }
 
+        // Validate Pin
         public string getStatus(string cardNo)
         {
             try
             {
-                conn.Open();
                 string status = "";
                 string sql = "Select Status from Card where CardNo = @cardNo";
+                conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("cardNo", cardNo);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -95,6 +98,78 @@ namespace DALs
             }
         }
 
+        public int getAttempt(string cardNo)
+        {
+            try
+            {
+                int attempt = 0;
+                string sql = "Select Attempt from Card where CardNo = @cardNo";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    attempt = Convert.ToInt16(dr["Attempt"].ToString());
+                }
+                conn.Close();
+                return attempt;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
 
+        public void updateAttemptStatus(string cardNo)
+        {
+            try
+            {
+                int attempt = getAttempt(cardNo) + 1;
+                string sql = "";
+                if (attempt < 3)
+                    sql = "update Card set Attempt = @attempt where CardNo = @cardNo";
+                else
+                {
+                    attempt = 3;
+                    sql = "update Card set Attempt = @attempt, Status = 'block' where CardNo = @cardNo";
+                }
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("attempt", attempt);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                conn.Close();
+            }
+        }
+
+        public string getPIN(string cardNo)
+        {
+            try
+            {
+                conn.Open();
+                string pin = "";
+                string sql = "Select PIN from Card where CardNo = @cardNo";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    pin = dr["Pin"].ToString().Trim();
+                }
+                conn.Close();
+                return pin;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return "";
+            }
+        }
     }
 }

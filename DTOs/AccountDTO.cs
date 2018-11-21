@@ -15,7 +15,7 @@ namespace DTO
         private string wDID;
         private decimal balance;
 
-        public AccountDTO(string accountID, string custID, string accountNo, string oDID, string wDID, int balance)
+        public AccountDTO(string accountID, string custID, string accountNo, string oDID, string wDID, decimal balance)
         {
             this.AccountID = accountID;
             this.CustID = custID;

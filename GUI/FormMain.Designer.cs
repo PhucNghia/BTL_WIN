@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbCardNo = new System.Windows.Forms.Label();
             this.btnNone = new System.Windows.Forms.Button();
             this.btnEnter = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -67,16 +66,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbCardNo
-            // 
-            this.lbCardNo.AutoSize = true;
-            this.lbCardNo.Location = new System.Drawing.Point(174, 491);
-            this.lbCardNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbCardNo.Name = "lbCardNo";
-            this.lbCardNo.Size = new System.Drawing.Size(0, 17);
-            this.lbCardNo.TabIndex = 28;
-            this.lbCardNo.Visible = false;
             // 
             // btnNone
             // 
@@ -118,6 +107,7 @@
             this.btnCancel.TabIndex = 27;
             this.btnCancel.Text = "CANCEL";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btn0
             // 
@@ -130,7 +120,7 @@
             this.btn0.TabIndex = 16;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = true;
-            this.btn0.Click += new System.EventHandler(this.btn0_Click);
+            this.btn0.Click += new System.EventHandler(this.btnNumber0_Click);
             // 
             // btn9
             // 
@@ -143,7 +133,7 @@
             this.btn9.TabIndex = 14;
             this.btn9.Text = "9";
             this.btn9.UseVisualStyleBackColor = true;
-            this.btn9.Click += new System.EventHandler(this.btn9_Click);
+            this.btn9.Click += new System.EventHandler(this.btnNumber9_Click);
             // 
             // btn8
             // 
@@ -156,7 +146,7 @@
             this.btn8.TabIndex = 13;
             this.btn8.Text = "8";
             this.btn8.UseVisualStyleBackColor = true;
-            this.btn8.Click += new System.EventHandler(this.btn8_Click);
+            this.btn8.Click += new System.EventHandler(this.btnNumber8_Click);
             // 
             // btn7
             // 
@@ -169,7 +159,7 @@
             this.btn7.TabIndex = 12;
             this.btn7.Text = "7";
             this.btn7.UseVisualStyleBackColor = true;
-            this.btn7.Click += new System.EventHandler(this.btn7_Click);
+            this.btn7.Click += new System.EventHandler(this.btnNumber7_Click);
             // 
             // btn6
             // 
@@ -182,7 +172,7 @@
             this.btn6.TabIndex = 11;
             this.btn6.Text = "6";
             this.btn6.UseVisualStyleBackColor = true;
-            this.btn6.Click += new System.EventHandler(this.btn6_Click);
+            this.btn6.Click += new System.EventHandler(this.btnNumber6_Click);
             // 
             // btn5
             // 
@@ -195,7 +185,7 @@
             this.btn5.TabIndex = 10;
             this.btn5.Text = "5";
             this.btn5.UseVisualStyleBackColor = true;
-            this.btn5.Click += new System.EventHandler(this.btn5_Click);
+            this.btn5.Click += new System.EventHandler(this.btnNumber5_Click);
             // 
             // button13
             // 
@@ -220,7 +210,7 @@
             this.btn4.TabIndex = 8;
             this.btn4.Text = "4";
             this.btn4.UseVisualStyleBackColor = true;
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn4.Click += new System.EventHandler(this.btnNumber4_Click);
             // 
             // button11
             // 
@@ -245,7 +235,7 @@
             this.btn3.TabIndex = 6;
             this.btn3.Text = "3";
             this.btn3.UseVisualStyleBackColor = true;
-            this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            this.btn3.Click += new System.EventHandler(this.btnNumber3_Click);
             // 
             // btn2
             // 
@@ -258,7 +248,7 @@
             this.btn2.TabIndex = 5;
             this.btn2.Text = "2";
             this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            this.btn2.Click += new System.EventHandler(this.btnNumber2_Click);
             // 
             // btn1
             // 
@@ -271,7 +261,7 @@
             this.btn1.TabIndex = 15;
             this.btn1.Text = "1";
             this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn1.Click += new System.EventHandler(this.btnNumber1_Click);
             // 
             // panel1
             // 
@@ -323,6 +313,7 @@
             this.btnRight4.Size = new System.Drawing.Size(87, 61);
             this.btnRight4.TabIndex = 31;
             this.btnRight4.UseVisualStyleBackColor = false;
+            this.btnRight4.Click += new System.EventHandler(this.btnRight4_Click);
             // 
             // panel2
             // 
@@ -382,6 +373,7 @@
             this.btnRight2.Size = new System.Drawing.Size(87, 61);
             this.btnRight2.TabIndex = 38;
             this.btnRight2.UseVisualStyleBackColor = false;
+            this.btnRight2.Click += new System.EventHandler(this.btnRight2_Click);
             // 
             // panel5
             // 
@@ -407,6 +399,7 @@
             this.btnRight1.Size = new System.Drawing.Size(87, 61);
             this.btnRight1.TabIndex = 40;
             this.btnRight1.UseVisualStyleBackColor = false;
+            this.btnRight1.Click += new System.EventHandler(this.btnRight1_Click);
             // 
             // btnLeft1
             // 
@@ -424,6 +417,7 @@
             this.btnLeft1.Size = new System.Drawing.Size(87, 61);
             this.btnLeft1.TabIndex = 45;
             this.btnLeft1.UseVisualStyleBackColor = false;
+            this.btnLeft1.Click += new System.EventHandler(this.btnLeft1_Click);
             // 
             // btnLeft2
             // 
@@ -441,6 +435,7 @@
             this.btnLeft2.Size = new System.Drawing.Size(87, 61);
             this.btnLeft2.TabIndex = 44;
             this.btnLeft2.UseVisualStyleBackColor = false;
+            this.btnLeft2.Click += new System.EventHandler(this.btnLeft2_Click);
             // 
             // btnLeft3
             // 
@@ -458,6 +453,7 @@
             this.btnLeft3.Size = new System.Drawing.Size(87, 61);
             this.btnLeft3.TabIndex = 43;
             this.btnLeft3.UseVisualStyleBackColor = false;
+            this.btnLeft3.Click += new System.EventHandler(this.btnLeft3_Click);
             // 
             // btnLeft4
             // 
@@ -475,6 +471,7 @@
             this.btnLeft4.Size = new System.Drawing.Size(87, 61);
             this.btnLeft4.TabIndex = 42;
             this.btnLeft4.UseVisualStyleBackColor = false;
+            this.btnLeft4.Click += new System.EventHandler(this.btnLeft4_Click);
             // 
             // panel6
             // 
@@ -554,7 +551,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnRight4);
             this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.lbCardNo);
             this.Controls.Add(this.btnNone);
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.btnCancel);
@@ -575,13 +571,11 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lbCardNo;
         private System.Windows.Forms.Button btnNone;
         private System.Windows.Forms.Button btnEnter;
         private System.Windows.Forms.Button btnCancel;
