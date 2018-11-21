@@ -15,22 +15,29 @@ namespace GUI
     {
         CardBUL cardBUL = new CardBUL();
         public static string state;
-        ValidateCard validateCard = new ValidateCard();
         public FormMain()
         {
             InitializeComponent();
-
-            if (!panelMain.Controls.Contains(ValidateCard.Instance))
-            {
-                panelMain.Controls.Add(ValidateCard.Instance);
-                ValidateCard.Instance.Dock = DockStyle.Fill;
-                ValidateCard.Instance.BringToFront();
-            }
-            else
-            {
-                ValidateCard.Instance.BringToFront();
-            }
             state = "ValidateCard";
+            addUserControl(ValidateCard.Instance);
+        }
+
+        // ============= Process Button =============
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (state.Equals("ValidateCard"))
+            {
+                ValidateCard.Instance.clearTextBoxCardNo();
+            }
+            else if (state.Equals("ValidatePin"))
+            {
+                ValidatePin.Instance.clearTextBoxPin();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -39,6 +46,40 @@ namespace GUI
             {
                 checkCardNo();
             }
+            else if (state.Equals("ValidatePin"))
+            {
+                checkPIN();
+            }
+        }
+
+        private void btnLeft1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLeft2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLeft3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLeft4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRight1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRight2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnRight3_Click(object sender, EventArgs e)
@@ -47,132 +88,149 @@ namespace GUI
             {
                 checkCardNo();
             }
+            else if (state.Equals("ValidatePin"))
+            {
+                checkPIN();
+            }
         }
 
-        // Function check CardNo
-        private void checkCardNo()
+        private void btnRight4_Click(object sender, EventArgs e)
         {
-            bool checkSuccess = cardBUL.checkCardNo(ValidateCard.Instance.getTextBoxCardNo());
-            if (checkSuccess)
+
+        }
+
+        private void btnNumber1_Click(object sender, EventArgs e)
+        {
+            enterTextBox("1");
+        }
+
+        private void btnNumber2_Click(object sender, EventArgs e)
+        {
+            enterTextBox("2");
+        }
+
+        private void btnNumber3_Click(object sender, EventArgs e)
+        {
+            enterTextBox("3");
+        }
+
+        private void btnNumber4_Click(object sender, EventArgs e)
+        {
+            enterTextBox("4");
+        }
+
+        private void btnNumber5_Click(object sender, EventArgs e)
+        {
+            enterTextBox("5");
+        }
+
+        private void btnNumber6_Click(object sender, EventArgs e)
+        {
+            enterTextBox("6");
+        }
+
+        private void btnNumber7_Click(object sender, EventArgs e)
+        {
+            enterTextBox("7");
+        }
+
+        private void btnNumber8_Click(object sender, EventArgs e)
+        {
+            enterTextBox("8");
+        }
+
+        private void btnNumber9_Click(object sender, EventArgs e)
+        {
+            enterTextBox("9");
+        }
+
+        private void btnNumber0_Click(object sender, EventArgs e)
+        {
+            enterTextBox("0");
+        }
+
+        // Function Add User Control to FormMain
+        private void addUserControl(UserControl userControl)
+        {
+            if (!panelMain.Controls.Contains(userControl))
             {
-                bool checkExpiredDate = cardBUL.getExpiredDate(ValidateCard.Instance.getTextBoxCardNo());
-                if (checkExpiredDate)
-                {
-                    if (!panelMain.Controls.Contains(ValidatePin.Instance))
-                    {
-                        panelMain.Controls.Add(ValidatePin.Instance);
-                        ValidatePin.Instance.Dock = DockStyle.Fill;
-                        ValidatePin.Instance.BringToFront();
-                    }
-                    else
-                    {
-                        ValidatePin.Instance.BringToFront();
-                    }
-                    state = "ValidatePin";
-                }
-                else
-                {
-                    ValidateCard.Instance.getlblExpiredDate().Visible = true;
-                    ValidateCard.Instance.getlblCheckMa().Visible = false;
-                }
+                panelMain.Controls.Add(userControl);
+                userControl.Dock = DockStyle.Fill;
+                userControl.BringToFront();
             }
             else
             {
-                ValidateCard.Instance.getlblCheckMa().Visible = true;
-                ValidateCard.Instance.getlblExpiredDate().Visible = false;
+                userControl.BringToFront();
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ValidateCard.Instance.clearTextBoxCardNo();
-        }
-
+        // Function enter Number to Texbox
         private void enterTextBox(string number)
         {
             if (state.Equals("ValidateCard"))
             {
                 ValidateCard.Instance.setTextBoxCardNo(number);
             }
-        }
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
+            else if (state.Equals("ValidatePin"))
             {
-                enterTextBox("1");
+                ValidatePin.Instance.setTextBoxPin(number);
             }
         }
 
-        private void btn2_Click(object sender, EventArgs e)
+        // Function check CardNo
+        private void checkCardNo()
         {
-            if (state.Equals("ValidateCard"))
+            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            bool checkSuccess = cardBUL.checkCardNo(cardNo);
+            if (checkSuccess)
             {
-                enterTextBox("2");
+                bool checkExpiredDate = cardBUL.getExpiredDate(cardNo);
+                if (checkExpiredDate)
+                {
+                    state = "ValidatePin";
+                    addUserControl(ValidatePin.Instance);
+                }
+                else
+                {
+                    ValidateCard.Instance.getlblExpiredDate().Visible = true;
+                    ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                }
+            }
+            else
+            {
+                ValidateCard.Instance.getlblChecCardNo().Visible = true;
+                ValidateCard.Instance.getlblExpiredDate().Visible = false;
             }
         }
 
-        private void btn3_Click(object sender, EventArgs e)
+        // Function check Pin
+        private void checkPIN()
         {
-            if (state.Equals("ValidateCard"))
-            {
-                enterTextBox("3");
-            }
-        }
+            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string pin = ValidatePin.Instance.getTextBoxPin();
 
-        private void btn4_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
+            bool checkPin = cardBUL.getPIN(cardNo, pin);
+            bool checkStatus = cardBUL.getStatus(cardNo);
+            if(checkPin && checkStatus)
             {
-                enterTextBox("4");
+                state = "ListService";
+                addUserControl(ListService.Instance);
             }
-        }
-
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
+            else if(checkPin && !checkStatus)
             {
-                enterTextBox("5");
+                ValidatePin.Instance.getlblBlockCard().Visible = true;
+                ValidatePin.Instance.getlblCheckPin().Visible = false;
             }
-        }
-
-        private void btn6_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
+            else if(!checkPin && checkStatus)
             {
-                enterTextBox("6");
+                cardBUL.updateAttemptStatus(cardNo);
+                ValidatePin.Instance.getlblCheckPin().Visible = true;
+                ValidatePin.Instance.getlblBlockCard().Visible = false;
             }
-        }
-
-        private void btn7_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
+            else
             {
-                enterTextBox("7");
-            }
-        }
-
-        private void btn8_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
-            {
-                enterTextBox("8");
-            }
-        }
-
-        private void btn9_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
-            {
-                enterTextBox("9");
-            }
-        }
-
-        private void btn0_Click(object sender, EventArgs e)
-        {
-            if (state.Equals("ValidateCard"))
-            {
-                enterTextBox("0");
+                ValidatePin.Instance.getlblCheckPin().Visible = true;
+                ValidatePin.Instance.getlblBlockCard().Visible = true;
             }
         }
     }

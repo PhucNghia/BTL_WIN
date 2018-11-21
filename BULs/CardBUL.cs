@@ -11,6 +11,7 @@ namespace BULs
     public class CardBUL
     {
         CardDAL cardDAL = new CardDAL();
+        // Validate CardNo
         public bool checkCardNo(string cardNo)
         {
             return cardDAL.checkCardNo(cardNo);
@@ -60,9 +61,26 @@ namespace BULs
             return false;
         }
 
-        public string getStatus(string cardNo)
+        // Validate Pin
+        public bool getStatus(string cardNo)
         {
-            return cardDAL.getStatus(cardNo);
+            if (cardDAL.getStatus(cardNo).Equals("normal"))
+                return true;
+            else
+                return false;
+        }
+
+        public void updateAttemptStatus(string card)
+        {
+            cardDAL.updateAttemptStatus(card);
+        }
+
+        public bool getPIN(string cardNo, string pin)
+        {
+            if (cardDAL.getPIN(cardNo).Equals(pin))
+                return true;
+            else
+                return false;
         }
     }
 }
