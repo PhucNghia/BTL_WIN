@@ -16,10 +16,10 @@ namespace DALs
             try
             {
                 int overDraft = -1;
-                string query = "select OverDraft.Value from " +
-                    "Account inner join Card on Account.AccountID = Card.AccountID " +
-                    "inner join OverDraft on Account.ODID = OverDraft.ODID " +
-                    "where CardNo = @cardNo";
+                string query = "Select OverDraft.Value from "
+                    + "Account inner join Card on Account.AccountID = Card.AccountID " 
+                    + "inner join OverDraft on Account.ODID = OverDraft.ODID "
+                    + "where CardNo = @cardNo";
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("cardNo", cardNo);
@@ -30,7 +30,6 @@ namespace DALs
                 }
                 conn.Close();
 
-                conn.Close();
                 return overDraft;
             }
             catch

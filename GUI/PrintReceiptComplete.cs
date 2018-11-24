@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using BULs;
 using DALs;
-using DTO;
+using DTOs;
 
 namespace GUI
 {

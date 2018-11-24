@@ -42,8 +42,9 @@
             this.lbErrorMoney.Location = new System.Drawing.Point(35, 162);
             this.lbErrorMoney.Name = "lbErrorMoney";
             this.lbErrorMoney.Size = new System.Drawing.Size(686, 29);
-            this.lbErrorMoney.TabIndex = 7;
+            this.lbErrorMoney.TabIndex = 10;
             this.lbErrorMoney.Text = "Số tiền trong tài khoản của bạn không đủ để thực hiện giao dịch";
+            this.lbErrorMoney.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbErrorMoney.Visible = false;
             // 
             // lbErrorCard
@@ -55,8 +56,9 @@
             this.lbErrorCard.Location = new System.Drawing.Point(263, 191);
             this.lbErrorCard.Name = "lbErrorCard";
             this.lbErrorCard.Size = new System.Drawing.Size(230, 29);
-            this.lbErrorCard.TabIndex = 8;
+            this.lbErrorCard.TabIndex = 11;
             this.lbErrorCard.Text = "Mã thẻ không hợp lệ";
+            this.lbErrorCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbErrorCard.Visible = false;
             // 
             // label4
@@ -68,14 +70,16 @@
             this.label4.Location = new System.Drawing.Point(279, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(198, 29);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Giao dịch thất bại";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Fail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.lbErrorMoney);
             this.Controls.Add(this.lbErrorCard);
             this.Controls.Add(this.label4);

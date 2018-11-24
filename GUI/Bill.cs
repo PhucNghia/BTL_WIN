@@ -10,23 +10,22 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class OtherTransaction : UserControl
+    public partial class Bill : UserControl
     {
-        private static OtherTransaction _instance;
+        private static Bill _instance;
 
-
-        public OtherTransaction()
+        public Bill()
         {
             InitializeComponent();
         }
 
-        public static OtherTransaction Instance
+        public static Bill Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new OtherTransaction();
+                    _instance = new Bill();
                 }
                 return _instance;
             }

@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -155,6 +159,24 @@
     <Compile Include="OtherDeal.Designer.cs">
       <DependentUpon>OtherDeal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bill.Designer.cs">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashTransfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CashTransfer.Designer.cs">
+      <DependentUpon>CashTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fail.Designer.cs">
+      <DependentUpon>Fail.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +219,12 @@
     </Compile>
     <Compile Include="ReceiveReceipt.Designer.cs">
       <DependentUpon>ReceiveReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Success.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Success.Designer.cs">
+      <DependentUpon>Success.cs</DependentUpon>
     </Compile>
     <Compile Include="ValidateCard.cs">
       <SubType>UserControl</SubType>
@@ -270,6 +298,15 @@
     <EmbeddedResource Include="OtherDeal.resx">
       <DependentUpon>OtherDeal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Bill.resx">
+      <DependentUpon>Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashTransfer.resx">
+      <DependentUpon>CashTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fail.resx">
+      <DependentUpon>Fail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReceiveReceipt.resx">
       <DependentUpon>ReceiveReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Success.resx">
+      <DependentUpon>Success.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidateCard.resx">
       <DependentUpon>ValidateCard.cs</DependentUpon>
