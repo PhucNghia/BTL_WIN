@@ -54,5 +54,10 @@ namespace GUI
         {
             return lblExpiredDate;
         }
+
+        private void ValidateCard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

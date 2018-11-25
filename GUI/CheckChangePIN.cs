@@ -10,22 +10,21 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class ValidatePin : UserControl
+    public partial class CheckChangePIN : UserControl
     {
-        private static ValidatePin _instance;
-        public static ValidatePin Instance
+        private static CheckChangePIN _instance;
+        public static CheckChangePIN Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ValidatePin();
+                    _instance = new CheckChangePIN();
                 }
                 return _instance;
             }
         }
-
-        public ValidatePin()
+        public CheckChangePIN()
         {
             InitializeComponent();
         }
@@ -39,7 +38,7 @@ namespace GUI
         {
             int limitPin;
             limitPin = getTextBoxPin().Length;
-            if(limitPin < 6)
+            if (limitPin < 6)
                 txtPin.Text += number;
         }
 
@@ -53,14 +52,6 @@ namespace GUI
             return lblCheckPIN;
         }
 
-        public Label getlblBlockCard()
-        {
-            return lblBlockCard;
-        }
-
-        private void ValidatePin_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
