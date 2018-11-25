@@ -127,11 +127,50 @@
   <data name="ttdvtaichinh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ttdvtaichinh.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="2.000.000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2.000.000.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\100.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ruttien" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ruttien.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="số khác" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\số khác.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="giaodichkhac" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\giaodichkhac.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="huybo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huybo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ttphidichvu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ttphidichvu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ttdvtaichinh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ttdvtaichinh.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nhapsaipin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nhapsaipin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ruttien" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ruttien.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1.000.000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.000.000.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chuyenkhoan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chuyenkhoan.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1.500.000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.500.000.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="doipin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doipin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="500.000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\500.000.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="giaodichkhac" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\giaodichkhac.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -168,5 +207,14 @@
   </data>
   <data name="blockfail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blockfail.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgMain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgMain.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dongy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dongy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="khong" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\khong.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

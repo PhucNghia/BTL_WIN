@@ -82,6 +82,48 @@
     <Compile Include="CheckPINFail.Designer.cs">
       <DependentUpon>CheckPINFail.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomWithDraw.Designer.cs">
+      <DependentUpon>CustomWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorSystem.Designer.cs">
+      <DependentUpon>ErrorSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorMoneyType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorMoneyType.Designer.cs">
+      <DependentUpon>ErrorMoneyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverMaximumWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OverMaximumWithDraw.Designer.cs">
+      <DependentUpon>OverMaximumWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverMinimumBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OverMinimumBalance.Designer.cs">
+      <DependentUpon>OverMinimumBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuccessWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SuccessWithDraw.Designer.cs">
+      <DependentUpon>SuccessWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WithDraw.Designer.cs">
+      <DependentUpon>WithDraw.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +179,27 @@
     <EmbeddedResource Include="CheckPINFail.resx">
       <DependentUpon>CheckPINFail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomWithDraw.resx">
+      <DependentUpon>CustomWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorSystem.resx">
+      <DependentUpon>ErrorSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorMoneyType.resx">
+      <DependentUpon>ErrorMoneyType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverMaximumWithDraw.resx">
+      <DependentUpon>OverMaximumWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverMinimumBalance.resx">
+      <DependentUpon>OverMinimumBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuccessWithDraw.resx">
+      <DependentUpon>SuccessWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WithDraw.resx">
+      <DependentUpon>WithDraw.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +247,10 @@
       <Project>{21e8be39-aa48-4190-9b21-3394ffbcc4e9}</Project>
       <Name>BULs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DALs\DALs.csproj">
+      <Project>{41ff78aa-2a5b-4427-88a1-bca2cb09cd56}</Project>
+      <Name>DALs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -229,6 +296,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blockfail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.000.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.000.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\500.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.500.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\số khác.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\co.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khong.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
