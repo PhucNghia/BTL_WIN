@@ -79,7 +79,25 @@ namespace GUI
 
         private void btnRight2_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("CashTransfer"))
+            {
+                bool check = cardBUL.checkCardNo(CashTransfer.Instance.getTextBoxCardNo());
+                if (!check)
+                {
+                    if (!panelMain.Controls.Contains(Fail.Instance))
+                    {
+                        panelMain.Controls.Add(Fail.Instance);
+                        Fail.Instance.Dock = DockStyle.Fill;
+                        Fail.Instance.BringToFront();
+                    }
+                    else
+                    {
+                        Fail.Instance.BringToFront();
+                    }
+                    Fail.Instance.showErrorCard();
+                    state = "fail";
+                }
+            }
         }
 
         private void btnRight3_Click(object sender, EventArgs e)
@@ -91,7 +109,7 @@ namespace GUI
             else if (state.Equals("ValidatePin"))
             {
                 checkPIN();
-            }
+            } 
         }
 
         private void btnRight4_Click(object sender, EventArgs e)

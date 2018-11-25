@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fail.Designer.cs">
+      <DependentUpon>Fail.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     <Compile Include="ValidatePin.Designer.cs">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Fail.resx">
+      <DependentUpon>Fail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
