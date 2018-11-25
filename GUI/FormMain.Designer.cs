@@ -612,6 +612,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button12;
+        
     }
 }
 

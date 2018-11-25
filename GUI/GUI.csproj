@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckBalance.Designer.cs">
+      <DependentUpon>CheckBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmPrintReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfirmPrintReceipt.Designer.cs">
+      <DependentUpon>ConfirmPrintReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtherDeal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OtherDeal.Designer.cs">
+      <DependentUpon>OtherDeal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,12 +76,30 @@
     <Compile Include="ListService.Designer.cs">
       <DependentUpon>ListService.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintReceipt.Designer.cs">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintReceiptComplete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintReceiptComplete.Designer.cs">
+      <DependentUpon>PrintReceiptComplete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiveReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReceiveReceipt.Designer.cs">
+      <DependentUpon>ReceiveReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="ValidateCard.cs">
       <SubType>UserControl</SubType>
@@ -77,16 +113,34 @@
     <Compile Include="ValidatePin.Designer.cs">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CheckBalance.resx">
+      <DependentUpon>CheckBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmPrintReceipt.resx">
+      <DependentUpon>ConfirmPrintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherDeal.resx">
+      <DependentUpon>OtherDeal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListService.resx">
       <DependentUpon>ListService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintReceipt.resx">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReceiptComplete.resx">
+      <DependentUpon>PrintReceiptComplete.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiveReceipt.resx">
+      <DependentUpon>ReceiveReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidateCard.resx">
       <DependentUpon>ValidateCard.cs</DependentUpon>
@@ -148,6 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\giaodichkhac.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46513428_347007205879337_7117448901887524864_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46519483_2246165359042246_570142129561534464_n.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

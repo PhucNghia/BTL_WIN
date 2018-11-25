@@ -14,6 +14,7 @@ namespace GUI
     public partial class FormMain : Form
     {
         CardBUL cardBUL = new CardBUL();
+        AccountBUL accountBUL = new AccountBUL();
         public static string state;
         public FormMain()
         {
@@ -59,7 +60,11 @@ namespace GUI
 
         private void btnLeft2_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("ListService"))
+            {
+                addUserControl(CheckBalance.Instance);
+                state = "CheckBalance";
+            }
         }
 
         private void btnLeft3_Click(object sender, EventArgs e)
