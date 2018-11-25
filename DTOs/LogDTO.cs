@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,7 +139,17 @@ namespace DTO
             this.Details = details;
             this.CardNoTo = cardNoTo;
         }
-
+        public LogDTO(DataRow row)
+        {
+            this.LogID = row["logID"].ToString();
+            this.LogTypeID = row["logTypeID"].ToString();
+            this.ATMID = row["aTMID"].ToString();
+            this.CardNo = row["cardNo"].ToString();
+            this.LogDate = DateTime.Parse(row["logDate"].ToString());
+            this.Amount = Decimal.Parse(row["amount"].ToString());
+            this.Details = row["details"].ToString();
+            this.CardNoTo = row["cardNoTo"].ToString();
+        }
        
     }
 }

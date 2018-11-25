@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -136,6 +137,24 @@
     <Compile Include="ConfirmChangePIN.Designer.cs">
       <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
     </Compile>
+    <Compile Include="CheckBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckBalance.Designer.cs">
+      <DependentUpon>CheckBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmPrintReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfirmPrintReceipt.Designer.cs">
+      <DependentUpon>ConfirmPrintReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtherDeal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OtherDeal.Designer.cs">
+      <DependentUpon>OtherDeal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,12 +173,30 @@
     <Compile Include="OtherTransaction.Designer.cs">
       <DependentUpon>OtherTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintReceipt.Designer.cs">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintReceiptComplete.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PrintReceiptComplete.Designer.cs">
+      <DependentUpon>PrintReceiptComplete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReceiveReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReceiveReceipt.Designer.cs">
+      <DependentUpon>ReceiveReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="ValidateCard.cs">
       <SubType>UserControl</SubType>
@@ -224,6 +261,15 @@
     <EmbeddedResource Include="ConfirmChangePIN.resx">
       <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CheckBalance.resx">
+      <DependentUpon>CheckBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmPrintReceipt.resx">
+      <DependentUpon>ConfirmPrintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherDeal.resx">
+      <DependentUpon>OtherDeal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -233,10 +279,19 @@
     <EmbeddedResource Include="OtherTransaction.resx">
       <DependentUpon>OtherTransaction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintReceipt.resx">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReceiptComplete.resx">
+      <DependentUpon>PrintReceiptComplete.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReceiveReceipt.resx">
+      <DependentUpon>ReceiveReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ValidateCard.resx">
       <DependentUpon>ValidateCard.cs</DependentUpon>
@@ -280,6 +335,10 @@
     <ProjectReference Include="..\DALs\DALs.csproj">
       <Project>{41ff78aa-2a5b-4427-88a1-bca2cb09cd56}</Project>
       <Name>DALs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTOs\DTOs.csproj">
+      <Project>{2e1fb0e6-f71d-438d-a376-685876b1f798}</Project>
+      <Name>DTOs</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +409,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\khong.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46513428_347007205879337_7117448901887524864_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46519483_2246165359042246_570142129561534464_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46908396_189712888639450_6339259381141471232_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46635550_376017576474325_7654328807549042688_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46967647_2196940563652273_293331053542637568_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46510809_979712528905850_109453157024661504_n %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46636075_598227013945959_6884015711363006464_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46736132_505267109985298_4142257925609488384_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46510809_979712528905850_109453157024661504_n.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

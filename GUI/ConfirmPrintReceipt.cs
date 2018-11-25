@@ -10,29 +10,23 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class ListService : UserControl
+    public partial class ConfirmPrintReceipt : UserControl
     {
-        private static ListService _instance;
-        public static ListService Instance
+        private static ConfirmPrintReceipt _instance;
+        public static ConfirmPrintReceipt Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ListService();
+                    _instance = new ConfirmPrintReceipt();
                 }
                 return _instance;
             }
         }
-
-        public ListService()
+        public ConfirmPrintReceipt()
         {
             InitializeComponent();
-        }
-
-        private void ListService_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

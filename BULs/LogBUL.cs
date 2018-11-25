@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DALs;
+using DTO;
+using System.Data;
 
 namespace BULs
 {
@@ -22,6 +24,23 @@ namespace BULs
             startDate = DateTime.Today.ToString("yyyy-MM-dd") + " 00:00:00";
             endDate = DateTime.Today.ToString("yyyy-MM-dd") + " 23:59:59";
             return logDAL.getTotalAmount(logTypeID, atmID, cardNo, startDate, endDate);
+        }
+
+        public  List<LogDTO> LoadLogList(string cardNo)
+        {
+            List<LogDTO> logList = logDAL.LoadLogList(cardNo);
+            List<LogDTO> loglistnew = new List<LogDTO>();
+            
+            foreach (LogDTO item in logList)
+            {
+                LogDTO log = item;
+                if (item.LogTypeID == "LT001" || item.LogTypeID == "LT002" || item.LogTypeID == "LT003" || item.LogTypeID == "LT004")
+                {
+                    log.LogTypeID = "-";
+                }
+                loglistnew.Add(log);
+            }
+            return loglistnew;
         }
     }
 }

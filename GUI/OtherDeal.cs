@@ -10,29 +10,24 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class ListService : UserControl
+    public partial class OtherDeal : UserControl
     {
-        private static ListService _instance;
-        public static ListService Instance
+
+        private static OtherDeal _instance;
+        public static OtherDeal Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ListService();
+                    _instance = new OtherDeal();
                 }
                 return _instance;
             }
         }
-
-        public ListService()
+        public OtherDeal()
         {
             InitializeComponent();
-        }
-
-        private void ListService_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

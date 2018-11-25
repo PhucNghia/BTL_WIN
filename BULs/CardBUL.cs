@@ -82,6 +82,7 @@ namespace BULs
             else
                 return false;
         }
+
         public bool changePIN(string cardNo, string newPIN)
         {
             return cardDAL.changePIN(cardNo, newPIN);
