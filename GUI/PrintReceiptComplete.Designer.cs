@@ -32,9 +32,11 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbBalance = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -42,7 +44,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = global::GUI.Properties.Resources._46513428_347007205879337_7117448901887524864_n;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(657, 335);
+            this.pictureBox5.Location = new System.Drawing.Point(880, 403);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(143, 37);
             this.pictureBox5.TabIndex = 43;
@@ -53,7 +55,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.BackgroundImage = global::GUI.Properties.Resources._46519483_2246165359042246_570142129561534464_n;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(657, 276);
+            this.pictureBox6.Location = new System.Drawing.Point(880, 329);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(143, 37);
             this.pictureBox6.TabIndex = 42;
@@ -74,35 +76,48 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(288, 301);
+            this.label2.Location = new System.Drawing.Point(504, 372);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(288, 24);
             this.label2.TabIndex = 44;
             this.label2.Text = "Bạn có cần biên lai không?";
             // 
-            // label3
+            // lbBalance
             // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(109, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(544, 24);
-            this.label3.TabIndex = 45;
+            this.lbBalance.BackColor = System.Drawing.Color.Transparent;
+            this.lbBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lbBalance.Location = new System.Drawing.Point(120, 73);
+            this.lbBalance.Name = "lbBalance";
+            this.lbBalance.Size = new System.Drawing.Size(566, 29);
+            this.lbBalance.TabIndex = 45;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.dataGridView1.Location = new System.Drawing.Point(125, 128);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(561, 170);
+            this.dataGridView1.TabIndex = 46;
             // 
             // PrintReceiptComplete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
-            this.Controls.Add(this.label3);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lbBalance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label1);
             this.Name = "PrintReceiptComplete";
-            this.Size = new System.Drawing.Size(800, 375);
+            this.Size = new System.Drawing.Size(1080, 462);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +129,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbBalance;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

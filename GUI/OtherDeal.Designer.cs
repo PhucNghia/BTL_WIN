@@ -51,7 +51,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = global::GUI.Properties.Resources._46519483_2246165359042246_570142129561534464_n;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(611, 219);
+            this.pictureBox5.Location = new System.Drawing.Point(880, 329);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(187, 46);
             this.pictureBox5.TabIndex = 48;
@@ -62,22 +62,23 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.BackgroundImage = global::GUI.Properties.Resources._46513428_347007205879337_7117448901887524864_n;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(614, 312);
+            this.pictureBox6.Location = new System.Drawing.Point(880, 403);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(184, 46);
             this.pictureBox6.TabIndex = 47;
             this.pictureBox6.TabStop = false;
             // 
-            // ConfirmReceipt
+            // OtherDeal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label1);
-            this.Name = "ConfirmReceipt";
-            this.Size = new System.Drawing.Size(798, 375);
+            this.Name = "OtherDeal";
+            this.Size = new System.Drawing.Size(1080, 462);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);

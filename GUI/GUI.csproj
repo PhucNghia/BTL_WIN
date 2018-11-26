@@ -148,6 +148,7 @@
     <EmbeddedResource Include="ValidatePin.resx">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,6 +175,10 @@
     <ProjectReference Include="..\BULs\BULs.csproj">
       <Project>{21e8be39-aa48-4190-9b21-3394ffbcc4e9}</Project>
       <Name>BULs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTOs\DTOs.csproj">
+      <Project>{2e1fb0e6-f71d-438d-a376-685876b1f798}</Project>
+      <Name>DTOs</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +213,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\46519483_2246165359042246_570142129561534464_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46908396_189712888639450_6339259381141471232_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46635550_376017576474325_7654328807549042688_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46967647_2196940563652273_293331053542637568_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46510809_979712528905850_109453157024661504_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46636075_598227013945959_6884015711363006464_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46736132_505267109985298_4142257925609488384_n.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

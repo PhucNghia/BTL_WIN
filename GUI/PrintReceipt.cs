@@ -12,6 +12,18 @@ namespace GUI
 {
     public partial class PrintReceipt : UserControl
     {
+        private static PrintReceipt _instance;
+        public static PrintReceipt Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PrintReceipt();
+                }
+                return _instance;
+            }
+        }
         public PrintReceipt()
         {
             InitializeComponent();

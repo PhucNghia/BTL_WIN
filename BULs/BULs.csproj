@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AccountBUL.cs" />
     <Compile Include="CardBUL.cs" />
+    <Compile Include="LogBUL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

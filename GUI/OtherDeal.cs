@@ -12,6 +12,18 @@ namespace GUI
 {
     public partial class OtherDeal : UserControl
     {
+        private static OtherDeal _instance;
+        public static OtherDeal Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new OtherDeal();
+                }
+                return _instance;
+            }
+        }
         public OtherDeal()
         {
             InitializeComponent();

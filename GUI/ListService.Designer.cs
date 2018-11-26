@@ -175,9 +175,9 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListService";
-            this.Size = new System.Drawing.Size(810, 375);
+            this.Size = new System.Drawing.Size(1080, 462);
             this.Load += new System.EventHandler(this.ListService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

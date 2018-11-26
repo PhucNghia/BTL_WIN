@@ -33,8 +33,10 @@
             this.lbBalance = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox5
@@ -42,7 +44,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = global::GUI.Properties.Resources._46519483_2246165359042246_570142129561534464_n;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(610, 229);
+            this.pictureBox5.Location = new System.Drawing.Point(1080, 462);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(187, 46);
             this.pictureBox5.TabIndex = 43;
@@ -53,7 +55,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.BackgroundImage = global::GUI.Properties.Resources._46513428_347007205879337_7117448901887524864_n;
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(660, 327);
+            this.pictureBox6.Location = new System.Drawing.Point(735, 345);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(184, 46);
             this.pictureBox6.TabIndex = 42;
@@ -62,11 +64,11 @@
             // lbBalance
             // 
             this.lbBalance.BackColor = System.Drawing.Color.Transparent;
-            this.lbBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lbBalance.Location = new System.Drawing.Point(86, 105);
             this.lbBalance.Name = "lbBalance";
-            this.lbBalance.Size = new System.Drawing.Size(646, 31);
+            this.lbBalance.Size = new System.Drawing.Size(655, 38);
             this.lbBalance.TabIndex = 35;
             this.lbBalance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -86,26 +88,41 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(112, 279);
+            this.label3.Location = new System.Drawing.Point(225, 278);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(407, 31);
             this.label3.TabIndex = 44;
             this.label3.Text = "Bạn có muốn in hóa đơn không ?";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources._46519483_2246165359042246_570142129561534464_n;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(735, 263);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(184, 46);
+            this.pictureBox1.TabIndex = 45;
+            this.pictureBox1.TabStop = false;
             // 
             // CheckBalance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.lbBalance);
             this.Controls.Add(this.label1);
             this.Name = "CheckBalance";
-            this.Size = new System.Drawing.Size(798, 375);
+            this.Size = new System.Drawing.Size(1041, 414);
+            this.Load += new System.EventHandler(this.CheckBalance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +135,6 @@
         private System.Windows.Forms.Label lbBalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

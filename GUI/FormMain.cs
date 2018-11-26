@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BULs;
+using DTO;
+using System.Threading;
 
 namespace GUI
 {
@@ -15,6 +17,9 @@ namespace GUI
     {
         CardBUL cardBUL = new CardBUL();
         AccountBUL accountBUL = new AccountBUL();
+        private LogBUL logBUL = new LogBUL();
+        private int pageNumber;
+        private int numberRecord;
         public static string state;
         public FormMain()
         {
@@ -55,7 +60,23 @@ namespace GUI
 
         private void btnLeft1_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("PrintReceipt"))
+            {
+                addUserControl(PrintReceiptComplete.Instance);
+                state = "PrintReceiptComplete";
+                string balance = accountBUL.getBalance(ValidateCard.Instance.getTextBoxCardNo()).ToString();
+                PrintReceiptComplete.Instance.setlbBalance(balance);
+                pageNumber = 1;
+                setDataGridView(pageNumber, numberRecord);
+            }
+            else if (state.Equals("PrintReceiptComplete"))
+            {
+                if (pageNumber - 1 < logBUL.getAllLog(ValidateCard.Instance.getTextBoxCardNo()).Count / numberRecord)
+                {
+                    pageNumber++;
+                    setDataGridView(pageNumber, numberRecord);
+                }
+            }
         }
 
         private void btnLeft2_Click(object sender, EventArgs e)
@@ -64,6 +85,8 @@ namespace GUI
             {
                 addUserControl(CheckBalance.Instance);
                 state = "CheckBalance";
+                string balance = accountBUL.getBalance(ValidateCard.Instance.getTextBoxCardNo()).ToString();
+                CheckBalance.Instance.setlbBalance(balance);
             }
         }
 
@@ -74,7 +97,26 @@ namespace GUI
 
         private void btnLeft4_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("ListService"))
+            {
+                addUserControl(PrintReceipt.Instance);
+                state = "PrintReceipt";             
+            }
+            else if (state.Equals("PrintReceipt"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            
+        }
+        // set data for DataGridView
+        private void setDataGridView(int page, int record)
+        {
+            if (logBUL.getAllLog(ValidateCard.Instance.getTextBoxCardNo()) != null)
+            {
+                PrintReceiptComplete.Instance.getDataGridView().DataSource = logBUL.getAllLog(ValidateCard.Instance.getTextBoxCardNo()).Skip((page - 1) * record).Take(record).ToList();
+            }
+            PrintReceiptComplete.Instance.settingDataGridView();
         }
 
         private void btnRight1_Click(object sender, EventArgs e)
@@ -97,11 +139,36 @@ namespace GUI
             {
                 checkPIN();
             }
+            else if (state.Equals("CheckBalance"))
+            {
+                Thread.Sleep(3000);
+                addUserControl(ConfirmPrintReceipt.Instance);
+                state = "ConfirmPrintReceipt";
+                
+                addUserControl(OtherDeal.Instance);
+                state = "OtherDeal";
+            }
+            else if (state.Equals("OtherDeal"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
         }
 
         private void btnRight4_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("CheckBalance"))
+            {
+                addUserControl(ValidateCard.Instance);
+                state = "ValidateCard";
+                ValidateCard.Instance.clearTextBoxCardNo();
+            }
+            else if (state.Equals("OtherDeal"))
+            {
+                addUserControl(ValidateCard.Instance);
+                state = "ValidateCard";
+                ValidateCard.Instance.clearTextBoxCardNo();
+            }
         }
 
         private void btnNumber1_Click(object sender, EventArgs e)
@@ -216,17 +283,17 @@ namespace GUI
 
             bool checkPin = cardBUL.getPIN(cardNo, pin);
             bool checkStatus = cardBUL.getStatus(cardNo);
-            if(checkPin && checkStatus)
+            if (checkPin && checkStatus)
             {
                 state = "ListService";
                 addUserControl(ListService.Instance);
             }
-            else if(checkPin && !checkStatus)
+            else if (checkPin && !checkStatus)
             {
                 ValidatePin.Instance.getlblBlockCard().Visible = true;
                 ValidatePin.Instance.getlblCheckPin().Visible = false;
             }
-            else if(!checkPin && checkStatus)
+            else if (!checkPin && checkStatus)
             {
                 cardBUL.updateAttemptStatus(cardNo);
                 ValidatePin.Instance.getlblCheckPin().Visible = true;

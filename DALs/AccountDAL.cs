@@ -20,8 +20,8 @@ namespace DALs
             try
             {
                 int balance = -1;
-                string query = "Select  Account.Balance from Account inner join Card on Account.AccountID = Card.AccountID where CardNo = @cardNo";
-                conn = new SqlConnection();
+                string query = "Select Account.Balance from Account inner join Card on Account.AccountID = Card.AccountID where CardNo = @cardNo";
+                conn = new SqlConnection(strcon);
                 conn.Open();
                 cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("cardNo", cardNo);

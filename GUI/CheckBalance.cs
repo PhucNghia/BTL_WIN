@@ -38,5 +38,9 @@ namespace GUI
             lbBalance.Text = balance + " VND";
         }
 
+        private void CheckBalance_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
