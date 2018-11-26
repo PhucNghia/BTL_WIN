@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Timers;
+
 using BULs;
 
 namespace GUI
@@ -14,6 +17,7 @@ namespace GUI
     public partial class FormMain : Form
     {
         CardBUL cardBUL = new CardBUL();
+        LogBUL logBUL = new LogBUL();
         public static string state;
         public FormMain()
         {
@@ -33,11 +37,52 @@ namespace GUI
             {
                 ValidatePin.Instance.clearTextBoxPin();
             }
+            else if (state.Equals("CheckChangePIN"))
+            {
+                CheckChangePIN.Instance.clearTextBoxPin();
+            }
+            else if (state.Equals("ChangePIN"))
+            {
+                ChangePIN.Instance.clearNewPIN();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            // back to List service 
+            if (state.Equals("ChangePIN") || state.Equals("CheckChangePIN") || state.Equals("ChangePINSuccess")|| state.Equals("CheckPINFail"))
+            {
+                ChangePIN.Instance.clearNewPIN();
+                ChangePIN.Instance.reset();
+                CheckChangePIN.Instance.clearTextBoxPin();
+ 
+                if (!panelMain.Controls.Contains(ListService.Instance))
+                {
+                    panelMain.Controls.Add(ListService.Instance);
+                    ListService.Instance.Dock = DockStyle.Fill;
+                    ListService.Instance.BringToFront();
+                }
+                else
+                {
+                    ListService.Instance.BringToFront();
+                }
+                state = "ListService";
+                ListService.Instance.BringToFront();
+            }
+            else if (state.Equals("ListService"))
+            {
+                if (!panelMain.Controls.Contains(ValidateCard.Instance))
+                {
+                    panelMain.Controls.Add(ValidateCard.Instance);
+                    ValidateCard.Instance.Dock = DockStyle.Fill;
+                    ValidateCard.Instance.BringToFront();
+                }
+                else
+                {
+                    ValidateCard.Instance.BringToFront();
+                }
+                state = "ValidateCard";
+            }
         }
 
         private void btnEnter_Click(object sender, EventArgs e)
@@ -49,6 +94,20 @@ namespace GUI
             else if (state.Equals("ValidatePin"))
             {
                 checkPIN();
+            }
+            else if (state.Equals("CheckChangePIN"))
+            {
+                checkChangePIN();
+            }
+            else if (state.Equals("ChangePIN"))
+            {
+                changePIN();
+            }  
+            else if (state.Equals("ChangePINSuccess"))
+            {
+                createLog("LT004","ATM001",ValidateCard.Instance.getTextBoxCardNo(),0,"Success","");
+                state = "OtherTransaction";
+                addUserControl(OtherTransaction.Instance);
             }
         }
 
@@ -64,7 +123,11 @@ namespace GUI
 
         private void btnLeft3_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("ListService"))
+            {
+                state = "CheckChangePIN";
+                addUserControl(CheckChangePIN.Instance);
+            }
         }
 
         private void btnLeft4_Click(object sender, EventArgs e)
@@ -79,25 +142,7 @@ namespace GUI
 
         private void btnRight2_Click(object sender, EventArgs e)
         {
-            if (state.Equals("CashTransfer"))
-            {
-                bool check = cardBUL.checkCardNo(CashTransfer.Instance.getTextBoxCardNo());
-                if (!check)
-                {
-                    if (!panelMain.Controls.Contains(Fail.Instance))
-                    {
-                        panelMain.Controls.Add(Fail.Instance);
-                        Fail.Instance.Dock = DockStyle.Fill;
-                        Fail.Instance.BringToFront();
-                    }
-                    else
-                    {
-                        Fail.Instance.BringToFront();
-                    }
-                    Fail.Instance.showErrorCard();
-                    state = "fail";
-                }
-            }
+
         }
 
         private void btnRight3_Click(object sender, EventArgs e)
@@ -109,14 +154,53 @@ namespace GUI
             else if (state.Equals("ValidatePin"))
             {
                 checkPIN();
-            } 
+            }
+            else if (state.Equals("CheckChangePIN"))
+            {
+                checkChangePIN();
+            }
+            else if (state.Equals("OtherTransaction"))
+            {
+                state = "ListService";
+                addUserControl(ListService.Instance);
+            }
         }
 
         private void btnRight4_Click(object sender, EventArgs e)
         {
-
+            // state validate card
+            if (state.Equals("ValidateCard"))
+            {
+                ValidateCard.Instance.clearTextBoxCardNo();
+            }
+            // state validate PIN
+            else if (state.Equals("ValidatePin"))
+            {
+                ValidatePin.Instance.clearTextBoxPin();
+                ValidatePin.Instance.getlblBlockCard().Visible = false;
+                ValidatePin.Instance.getlblCheckPin().Visible = false;
+                
+                if (!panelMain.Controls.Contains(ValidateCard.Instance))
+                {
+                    panelMain.Controls.Add(ValidatePin.Instance);
+                    ValidateCard.Instance.Dock = DockStyle.Fill;
+                    ValidateCard.Instance.BringToFront();
+                }
+                else
+                {
+                    ValidateCard.Instance.BringToFront();
+                }
+                
+                ValidateCard.Instance.clearTextBoxCardNo();
+                state = "ValidateCard";
+            }
+            else if (state.Equals("OtherTransaction"))
+            {
+                state = "ValidateCard";
+                addUserControl(ValidateCard.Instance);
+            }
         }
-
+        #region nhập số
         private void btnNumber1_Click(object sender, EventArgs e)
         {
             enterTextBox("1");
@@ -166,7 +250,7 @@ namespace GUI
         {
             enterTextBox("0");
         }
-
+        #endregion
         // Function Add User Control to FormMain
         private void addUserControl(UserControl userControl)
         {
@@ -193,8 +277,16 @@ namespace GUI
             {
                 ValidatePin.Instance.setTextBoxPin(number);
             }
+            else if (state.Equals("CheckChangePIN"))
+            {
+                CheckChangePIN.Instance.setTextBoxPin(number);
+            }
+            else if (state.Equals("ChangePIN"))
+            {
+                ChangePIN.Instance.setNewPIN(number);
+            }
         }
-
+       
         // Function check CardNo
         private void checkCardNo()
         {
@@ -212,12 +304,14 @@ namespace GUI
                 {
                     ValidateCard.Instance.getlblExpiredDate().Visible = true;
                     ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                    ValidateCard.Instance.clearTextBoxCardNo();
                 }
             }
             else
             {
                 ValidateCard.Instance.getlblChecCardNo().Visible = true;
                 ValidateCard.Instance.getlblExpiredDate().Visible = false;
+                ValidateCard.Instance.clearTextBoxCardNo();
             }
         }
 
@@ -233,23 +327,95 @@ namespace GUI
             {
                 state = "ListService";
                 addUserControl(ListService.Instance);
+                cardBUL.updateAttemptStatus(cardNo, true);
             }
             else if(checkPin && !checkStatus)
             {
-                ValidatePin.Instance.getlblBlockCard().Visible = true;
-                ValidatePin.Instance.getlblCheckPin().Visible = false;
+                state = "CardBlock";
+                addUserControl(CardBlock.Instance);
+
+                Thread.Sleep(3000);
+                state = "ValidateCard";
+                addUserControl(ValidateCard.Instance);
+                //ValidatePin.Instance.getlblBlockCard().Visible = true;
+                //ValidatePin.Instance.getlblCheckPin().Visible = false;
+                //ValidatePin.Instance.clearTextBoxPin();
             }
             else if(!checkPin && checkStatus)
             {
-                cardBUL.updateAttemptStatus(cardNo);
-                ValidatePin.Instance.getlblCheckPin().Visible = true;
-                ValidatePin.Instance.getlblBlockCard().Visible = false;
+                cardBUL.updateAttemptStatus(cardNo,false);
+                state = "CheckPINFail";
+                addUserControl(CheckPINFail.Instance);
+
+                Thread.Sleep(3000);
+                state = "ValidatePin";
+                addUserControl(ValidatePin.Instance);
+               
+                ValidatePin.Instance.clearTextBoxPin();
             }
             else
             {
-                ValidatePin.Instance.getlblCheckPin().Visible = true;
-                ValidatePin.Instance.getlblBlockCard().Visible = true;
+                state = "CardBlockPinFail";
+                addUserControl(CardBlockPinFail.Instance);
+
+                Thread.Sleep(3000);
+                state = "ValidateCard";
+                addUserControl(ValidateCard.Instance);
+                ValidatePin.Instance.clearTextBoxPin();
             }
+        }
+        private void checkChangePIN()
+        {
+            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string pin = CheckChangePIN.Instance.getTextBoxPin();
+
+            bool checkPin = cardBUL.getPIN(cardNo, pin);
+            
+            if (checkPin)
+            {
+                state = "ChangePIN";
+                addUserControl(ChangePIN.Instance);
+               
+            }
+            
+            else if (!checkPin)
+            {
+               
+                CheckChangePIN.Instance.getlblCheckPin().Visible = true;
+                CheckChangePIN.Instance.clearTextBoxPin();
+
+            }
+           
+        }
+        private void changePIN()
+        {
+            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string pin = ChangePIN.Instance.getNewPIN();
+
+            bool changePin = cardBUL.changePIN(cardNo, pin);
+            if (changePin)
+            {
+                state = "ChangePINSuccess";
+                addUserControl(ChangePINSuccess.Instance);
+               
+               Thread.Sleep(3000);
+               state = "OtherTransaction";
+               addUserControl(OtherTransaction.Instance);
+
+            }
+            
+        }
+        // function to create log
+        private void createLog(string logType, string atmId, string cardNo,decimal amount, string details,string cardTo)
+        {
+            string dateTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz");
+           
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            bool checkCreateLog = logBUL.createLog(logType, atmId, cardNo,date, amount, details, cardTo);
+        }
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

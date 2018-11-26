@@ -70,9 +70,9 @@ namespace BULs
                 return false;
         }
 
-        public void updateAttemptStatus(string card)
+        public void updateAttemptStatus(string card,bool reAttempt)
         {
-            cardDAL.updateAttemptStatus(card);
+            cardDAL.updateAttemptStatus(card,reAttempt);
         }
 
         public bool getPIN(string cardNo, string pin)
@@ -81,6 +81,10 @@ namespace BULs
                 return true;
             else
                 return false;
+        }
+        public bool changePIN(string cardNo, string newPIN)
+        {
+            return cardDAL.changePIN(cardNo, newPIN);
         }
     }
 }

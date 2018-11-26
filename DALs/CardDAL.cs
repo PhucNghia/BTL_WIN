@@ -122,12 +122,16 @@ namespace DALs
             }
         }
 
-        public void updateAttemptStatus(string cardNo)
+        public void updateAttemptStatus(string cardNo,bool reAttempt)
         {
             try
             {
                 int attempt = getAttempt(cardNo) + 1;
                 string sql = "";
+                if (reAttempt)
+                {
+                    attempt = 0;
+                }
                 if (attempt < 3)
                     sql = "update Card set Attempt = @attempt where CardNo = @cardNo";
                 else
@@ -169,6 +173,27 @@ namespace DALs
             {
                 conn.Close();
                 return "";
+            }
+        }
+
+        public bool changePIN(string cardNo, string newPIN)
+        {
+            try
+            {
+                conn.Open();
+               
+                string sql = "update Card set PIN= @newPIN where CardNo = @cardNo";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                cmd.Parameters.AddWithValue("newPIN", newPIN);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return false;
             }
         }
     }
