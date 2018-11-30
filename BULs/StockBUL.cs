@@ -53,15 +53,6 @@ namespace BULs
 
                 if (quantity > 0)
                     return money[i];
-
-               // int currentMoney = checkCurrentMoney("ATM001", getMoneyId(money[i]));
-
-                //if (currentMoney == -1)
-                //    return 0;
-                //else if (currentMoney != 0 && currentMoney < money[i])
-                //    return 0;
-                //else if(currentMoney != 0)
-                //    return money[i];
             }
             return 0;
         }

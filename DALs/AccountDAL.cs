@@ -43,7 +43,8 @@ namespace DALs
                 int balance = getBalance(cardNo);
                 int newBalance = balance - money;    // trừ thêm lệ phí là 1100 vnd
 
-                string queryUpdate = "update Account set Account.Balance = @newBalance from Account inner join Card on Account.AccountID = Card.AccountID where Card.CardNo = @cardNo ";
+                string queryUpdate = "update Account set Account.Balance = @newBalance " +
+                    "from Account inner join Card on Account.AccountID = Card.AccountID where Card.CardNo = @cardNo ";
                 conn.Open();
                 SqlCommand cmd1 = new SqlCommand(queryUpdate, conn);
                 cmd1.Parameters.AddWithValue("newBalance", newBalance);

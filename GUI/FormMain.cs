@@ -23,6 +23,7 @@ namespace GUI
         AccountBUL accountBUL = new AccountBUL();
         ConfigBUL configBUL = new ConfigBUL();
         public static string state;
+
         public FormMain()
         {
             InitializeComponent();
@@ -119,9 +120,11 @@ namespace GUI
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
                 string cardNo = ValidateCard.Instance.getTextBoxCardNo();
                 bool checkMaxWithDraw = configBUL.getMaxWithDraw(money);
-                bool checkCurrentBalance = accountBUL.checkCurrentBalance(cardNo, money);
                 bool checkWithDrawLimit;
+                bool checkBalanceAndOD = accountBUL.checkBalanceAndOverDraft(cardNo, money);
 
+                bool checkCurrentBalance = true; // accountBUL.checkCurrentBalance(cardNo, money);
+                
                 if (!checkMaxWithDraw)  // Vượt quá số tiền hệ thống / 1 lần rút 
                 {
                     Task delay = Task.Delay(5000);
@@ -130,7 +133,7 @@ namespace GUI
                     addUserControl(CustomWithDraw.Instance);
                     CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
                 }
-                else if (!checkCurrentBalance)  // K đủ số dư
+                else if (!checkBalanceAndOD)  // K đủ số dư
                 {
                     Task delay = Task.Delay(4000);
                     addUserControl(OverMinimumBalance.Instance);    

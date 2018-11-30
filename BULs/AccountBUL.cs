@@ -11,6 +11,7 @@ namespace BULs
     {
         private AccountDAL accountDAL = new AccountDAL();
         private MoneyBUL moneyBUL = new MoneyBUL();
+        private OverDraftDAL overDraftDAL = new OverDraftDAL();
 
         // widthdraw
         public string getBalance(string cardNo)
@@ -24,9 +25,9 @@ namespace BULs
             return accountDAL.updateBalance(money, cardNo);
         }
 
-        public bool checkCurrentBalance(string cardNo, int money)
+        public bool checkBalanceAndOverDraft(string cardNo, int money)
         {
-            if (money <= accountDAL.getBalance(cardNo))
+            if (money <= accountDAL.getBalance(cardNo) + overDraftDAL.getOverDraft(cardNo))
                 return true;
             else
                 return false;

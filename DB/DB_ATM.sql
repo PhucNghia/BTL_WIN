@@ -193,3 +193,8 @@ select * from Stock
 select * from LogType
 ---------------------------------
 select * from Log
+
+
+select OverDraft.Value from Account inner join Card on Account.AccountID = Card.AccountID
+                    inner join OverDraft on Account.AccountID = OverDraft.ODID
+                    where CardNo = '1234567891011'
