@@ -141,9 +141,9 @@ namespace GUI
             else if (state.Equals("CustomWithDraw"))
             {
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
-                string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+                string cardNo = getTextBoxCardNo();
                 bool checkMaxWithDraw = configBUL.getMaxWithDraw(money);        //trong bảng Config
-                bool checkWithDrawLimit = ;
+                //bool checkWithDrawLimit = ;
                 bool checkBalanceAndOD = accountBUL.checkBalanceAndOverDraft(cardNo, money);    // trong bảng OverDraft
 
                 if (!checkMaxWithDraw)  // Vượt quá số tiền hệ thống / 1 lần rút 
@@ -158,7 +158,7 @@ namespace GUI
                 {
                     Task delay = Task.Delay(4000);
                     addUserControl(OverMinimumBalance.Instance);    
-                    OverMinimumBalance.Instance.setTextBoxBalance(accountBUL.getBalance(ValidateCard.Instance.getTextBoxCardNo()));
+                    OverMinimumBalance.Instance.setTextBoxBalance(accountBUL.getBalance(getTextBoxCardNo()));
                     delay.Wait();
                     addUserControl(CustomWithDraw.Instance);
                     CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
@@ -189,7 +189,7 @@ namespace GUI
                         if (updateBalance)
                         {
                             addUserControl(SuccessWithDraw.Instance);
-                            SuccessWithDraw.Instance.setTextBoxBalance(accountBUL.getBalance(ValidateCard.Instance.getTextBoxCardNo()));
+                            SuccessWithDraw.Instance.setTextBoxBalance(accountBUL.getBalance(getTextBoxCardNo()));
                             state = "SuccessWithDraw";
                         }
                     }
