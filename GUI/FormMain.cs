@@ -19,6 +19,20 @@ namespace GUI
         CardBUL cardBUL = new CardBUL();
         LogBUL logBUL = new LogBUL();
         public static string state;
+        public string getTextBoxCardNo()
+        {
+            return txtCardNo.Text;
+        }
+
+        public void setTextBoxCardNo(string number)
+        {
+            txtCardNo.Text += number;
+        }
+
+        public void clearTextBoxCardNo()
+        {
+            txtCardNo.Text = "";
+        }
         public FormMain()
         {
             InitializeComponent();
@@ -31,7 +45,8 @@ namespace GUI
         {
             if (state.Equals("ValidateCard"))
             {
-                ValidateCard.Instance.clearTextBoxCardNo();
+                // ValidateCard.Instance.clearTextBoxCardNo();
+                clearTextBoxCardNo();
             }
             else if (state.Equals("ValidatePin"))
             {
@@ -44,6 +59,10 @@ namespace GUI
             else if (state.Equals("ChangePIN"))
             {
                 ChangePIN.Instance.clearNewPIN();
+            }
+            else if (state.Equals("ConfirmChangePIN"))
+            {
+                ConfirmChangePIN.Instance.clearNewPIN();
             }
         }
 
@@ -101,16 +120,21 @@ namespace GUI
             }
             else if (state.Equals("ChangePIN"))
             {
+                confirmChangePIN();
+            }
+            else if (state.Equals("ConfirmChangePIN"))
+            {
                 changePIN();
-            }  
+            }
             else if (state.Equals("ChangePINSuccess"))
             {
-                createLog("LT004","ATM001",ValidateCard.Instance.getTextBoxCardNo(),0,"Success","");
+                // createLog("LT004","ATM001",ValidateCard.Instance.getTextBoxCardNo(),0,"Đổi pin thành công","");
+                //createLog("LT004", "ATM001",getTextBoxCardNo(), 0, "Success", "");
                 state = "OtherTransaction";
                 addUserControl(OtherTransaction.Instance);
             }
         }
-
+        #region btnLeft
         private void btnLeft1_Click(object sender, EventArgs e)
         {
 
@@ -134,7 +158,8 @@ namespace GUI
         {
 
         }
-
+        #endregion
+        #region btnRight
         private void btnRight1_Click(object sender, EventArgs e)
         {
 
@@ -171,7 +196,8 @@ namespace GUI
             // state validate card
             if (state.Equals("ValidateCard"))
             {
-                ValidateCard.Instance.clearTextBoxCardNo();
+                // ValidateCard.Instance.clearTextBoxCardNo();
+                clearTextBoxCardNo();
             }
             // state validate PIN
             else if (state.Equals("ValidatePin"))
@@ -190,8 +216,9 @@ namespace GUI
                 {
                     ValidateCard.Instance.BringToFront();
                 }
-                
-                ValidateCard.Instance.clearTextBoxCardNo();
+
+                //ValidateCard.Instance.clearTextBoxCardNo();
+                clearTextBoxCardNo();
                 state = "ValidateCard";
             }
             else if (state.Equals("OtherTransaction"))
@@ -200,6 +227,7 @@ namespace GUI
                 addUserControl(ValidateCard.Instance);
             }
         }
+        #endregion
         #region nhập số
         private void btnNumber1_Click(object sender, EventArgs e)
         {
@@ -271,7 +299,8 @@ namespace GUI
         {
             if (state.Equals("ValidateCard"))
             {
-                ValidateCard.Instance.setTextBoxCardNo(number);
+                //ValidateCard.Instance.setTextBoxCardNo(number);
+                setTextBoxCardNo(number);
             }
             else if (state.Equals("ValidatePin"))
             {
@@ -283,14 +312,19 @@ namespace GUI
             }
             else if (state.Equals("ChangePIN"))
             {
-                ChangePIN.Instance.setNewPIN(number);
+                ChangePIN.Instance.setNewPIN(number);               
+            }
+            else if (state.Equals("ConfirmChangePIN"))
+            {
+                ConfirmChangePIN.Instance.setNewPIN(number);
             }
         }
        
         // Function check CardNo
         private void checkCardNo()
         {
-            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            // string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string cardNo =getTextBoxCardNo();
             bool checkSuccess = cardBUL.checkCardNo(cardNo);
             if (checkSuccess)
             {
@@ -304,21 +338,24 @@ namespace GUI
                 {
                     ValidateCard.Instance.getlblExpiredDate().Visible = true;
                     ValidateCard.Instance.getlblChecCardNo().Visible = false;
-                    ValidateCard.Instance.clearTextBoxCardNo();
+                    //  ValidateCard.Instance.clearTextBoxCardNo();
+                    clearTextBoxCardNo();
                 }
             }
             else
             {
                 ValidateCard.Instance.getlblChecCardNo().Visible = true;
                 ValidateCard.Instance.getlblExpiredDate().Visible = false;
-                ValidateCard.Instance.clearTextBoxCardNo();
+                //ValidateCard.Instance.clearTextBoxCardNo();
+                clearTextBoxCardNo();
             }
         }
 
         // Function check Pin
         private void checkPIN()
         {
-            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            // string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string cardNo =getTextBoxCardNo();
             string pin = ValidatePin.Instance.getTextBoxPin();
 
             bool checkPin = cardBUL.getPIN(cardNo, pin);
@@ -366,7 +403,8 @@ namespace GUI
         }
         private void checkChangePIN()
         {
-            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            //string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string cardNo = getTextBoxCardNo();
             string pin = CheckChangePIN.Instance.getTextBoxPin();
 
             bool checkPin = cardBUL.getPIN(cardNo, pin);
@@ -387,32 +425,77 @@ namespace GUI
             }
            
         }
+        private void confirmChangePIN()
+        {
+           
+            string pin = ChangePIN.Instance.getNewPIN();
+           
+            if (pin.Length == 6)
+            {
+                state = "ConfirmChangePIN";
+                addUserControl(ConfirmChangePIN.Instance);
+                ConfirmChangePIN.Instance.clearNewPIN();
+            }
+           
+            else
+            {
+                state = "ChangePIN";
+                addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.getcheckLB6so();
+                ChangePIN.Instance.clearNewPIN();
+            }
+
+        }
         private void changePIN()
         {
-            string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+
+            //string cardNo = ValidateCard.Instance.getTextBoxCardNo();
+            string cardNo = getTextBoxCardNo();
+            string confirmPin = ConfirmChangePIN.Instance.getNewPIN();
             string pin = ChangePIN.Instance.getNewPIN();
-
-            bool changePin = cardBUL.changePIN(cardNo, pin);
-            if (changePin)
-            {
-                state = "ChangePINSuccess";
-                addUserControl(ChangePINSuccess.Instance);
-               
-               Thread.Sleep(3000);
-               state = "OtherTransaction";
-               addUserControl(OtherTransaction.Instance);
-
-            }
             
+                bool changePin = cardBUL.changePIN(cardNo, confirmPin);
+                if (changePin && confirmPin.Length == 6 && pin == confirmPin)
+                {
+                    state = "ChangePINSuccess";
+                    addUserControl(ChangePINSuccess.Instance);
+                    createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "đổi pin thành công", "");
+
+                    Thread.Sleep(3000);
+                    state = "OtherTransaction";
+                    addUserControl(OtherTransaction.Instance);
+
+                }
+                else if(changePin && confirmPin.Length == 6 && pin != confirmPin)
+                {
+                    state = "ChangePIN";
+                    addUserControl(ChangePIN.Instance);
+                    ChangePIN.Instance.getPinFail();                   
+                    ChangePIN.Instance.clearNewPIN();
+                }
+            else if (changePin && confirmPin.Length != 6 && pin != confirmPin)
+            {
+                state = "ChangePIN";
+                addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.getPinFail();
+                ChangePIN.Instance.clearNewPIN();
+            }
+            else
+            {
+                state = "ChangePIN";
+                addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.getcheckLB6so();
+                ChangePIN.Instance.clearNewPIN();
+            }                       
         }
         // function to create log
         private void createLog(string logType, string atmId, string cardNo,decimal amount, string details,string cardTo)
         {
-            string dateTime = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz");
-           
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz");
+            date = date.Substring(0, date.Length - 6);
             bool checkCreateLog = logBUL.createLog(logType, atmId, cardNo,date, amount, details, cardTo);
         }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
 
