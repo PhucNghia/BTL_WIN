@@ -119,21 +119,19 @@ namespace GUI
             {
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
                 string cardNo = ValidateCard.Instance.getTextBoxCardNo();
-                bool checkMaxWithDraw = configBUL.getMaxWithDraw(money);
-                bool checkWithDrawLimit;
-                bool checkBalanceAndOD = accountBUL.checkBalanceAndOverDraft(cardNo, money);
+                bool checkMaxWithDraw = configBUL.getMaxWithDraw(money);        //trong bảng Config
+                bool checkWithDrawLimit = ;
+                bool checkBalanceAndOD = accountBUL.checkBalanceAndOverDraft(cardNo, money);    // trong bảng OverDraft
 
-                bool checkCurrentBalance = true; // accountBUL.checkCurrentBalance(cardNo, money);
-                
                 if (!checkMaxWithDraw)  // Vượt quá số tiền hệ thống / 1 lần rút 
                 {
                     Task delay = Task.Delay(5000);
-                    addUserControl(OverMaximumWithDraw.Instance);   
+                    addUserControl(OverMaximumWithDraw.Instance);
                     delay.Wait();
                     addUserControl(CustomWithDraw.Instance);
                     CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
                 }
-                else if (!checkBalanceAndOD)  // K đủ số dư
+                else if (!checkBalanceAndOD)  // K đủ số dư và thấu chi
                 {
                     Task delay = Task.Delay(4000);
                     addUserControl(OverMinimumBalance.Instance);    
