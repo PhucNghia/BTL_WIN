@@ -124,6 +124,12 @@
     <Compile Include="WithDraw.Designer.cs">
       <DependentUpon>WithDraw.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmChangePIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfirmChangePIN.Designer.cs">
+      <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <EmbeddedResource Include="WithDraw.resx">
       <DependentUpon>WithDraw.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmChangePIN.resx">
+      <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,7 +240,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bgMain.jpg" />
