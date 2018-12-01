@@ -31,7 +31,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCheckCardNo = new System.Windows.Forms.Label();
-            this.txtCardNo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblExpiredDate = new System.Windows.Forms.Label();
@@ -76,23 +75,11 @@
             this.lblCheckCardNo.Text = "Mã thẻ của bạn chưa đúng";
             this.lblCheckCardNo.Visible = false;
             // 
-            // txtCardNo
-            // 
-            this.txtCardNo.BackColor = System.Drawing.Color.SeaGreen;
-            this.txtCardNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCardNo.ForeColor = System.Drawing.Color.White;
-            this.txtCardNo.Location = new System.Drawing.Point(236, 188);
-            this.txtCardNo.Multiline = true;
-            this.txtCardNo.Name = "txtCardNo";
-            this.txtCardNo.Size = new System.Drawing.Size(282, 36);
-            this.txtCardNo.TabIndex = 4;
-            this.txtCardNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.dongy;
             this.pictureBox1.Location = new System.Drawing.Point(660, 267);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(140, 37);
             this.pictureBox1.TabIndex = 6;
@@ -102,7 +89,7 @@
             // 
             this.pictureBox2.BackgroundImage = global::GUI.Properties.Resources.huybo1;
             this.pictureBox2.Location = new System.Drawing.Point(660, 327);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(140, 37);
             this.pictureBox2.TabIndex = 7;
@@ -131,10 +118,9 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblCheckCardNo);
-            this.Controls.Add(this.txtCardNo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ValidateCard";
             this.Size = new System.Drawing.Size(810, 375);
             this.Load += new System.EventHandler(this.ValidateCard_Load);
@@ -150,7 +136,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCheckCardNo;
-        private System.Windows.Forms.TextBox txtCardNo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblExpiredDate;

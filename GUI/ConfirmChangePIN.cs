@@ -10,25 +10,24 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class ChangePIN : UserControl
+    public partial class ConfirmChangePIN : UserControl
     {
-        private static ChangePIN _instance;
-        public static ChangePIN Instance
+        private static ConfirmChangePIN _instance;
+        public static ConfirmChangePIN Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ChangePIN();
+                    _instance = new ConfirmChangePIN();
                 }
                 return _instance;
             }
         }
-        public ChangePIN()
+        public ConfirmChangePIN()
         {
             InitializeComponent();
         }
-
         public void clearNewPIN()
         {
             txtPin.Text = "";
@@ -38,22 +37,13 @@ namespace GUI
             return txtPin.Text;
         }
         public void setNewPIN(string number)
-        {   
+        {
             int limitPin;
             limitPin = getNewPIN().Length;
-            if (limitPin <6)
+            if (limitPin < 6)
                 txtPin.Text += number;
         }
-        public void getcheckLB6so()
-        {
-            lb6so.Visible = true;
-            lbPinFail.Visible = false;
-        }
-        public void getPinFail()
-        {
-            lbPinFail.Visible = true;
-            lb6so.Visible = false;
-        }
+       
         public void showLbSuccess()
         {
             label1.Visible = false;
