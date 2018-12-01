@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class WithDraw
+    partial class Withdraw
     {
         /// <summary> 
         /// Required designer variable.

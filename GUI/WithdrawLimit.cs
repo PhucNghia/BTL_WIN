@@ -10,22 +10,22 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Withdraw : UserControl
+    public partial class WithdrawLimit : UserControl
     {
-        private static Withdraw _instance;
-        public static Withdraw Instance
+        private static WithdrawLimit _instance;
+        public static WithdrawLimit Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Withdraw();
+                    _instance = new WithdrawLimit();
                 }
                 return _instance;
             }
         }
 
-        public Withdraw()
+        public WithdrawLimit()
         {
             InitializeComponent();
         }

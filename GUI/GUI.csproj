@@ -100,6 +100,12 @@
     <Compile Include="ErrorMoneyType.Designer.cs">
       <DependentUpon>ErrorMoneyType.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetBackCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GetBackCard.Designer.cs">
+      <DependentUpon>GetBackCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="OverMaximumWithDraw.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -118,11 +124,11 @@
     <Compile Include="SuccessWithDraw.Designer.cs">
       <DependentUpon>SuccessWithDraw.cs</DependentUpon>
     </Compile>
-    <Compile Include="WithDraw.cs">
+    <Compile Include="Withdraw.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WithDraw.Designer.cs">
-      <DependentUpon>WithDraw.cs</DependentUpon>
+    <Compile Include="Withdraw.Designer.cs">
+      <DependentUpon>Withdraw.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfirmChangePIN.cs">
       <SubType>UserControl</SubType>
@@ -167,6 +173,12 @@
     <Compile Include="ValidatePin.Designer.cs">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </Compile>
+    <Compile Include="WithdrawLimit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WithdrawLimit.Designer.cs">
+      <DependentUpon>WithdrawLimit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CardBlock.resx">
       <DependentUpon>CardBlock.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,6 +206,9 @@
     <EmbeddedResource Include="ErrorMoneyType.resx">
       <DependentUpon>ErrorMoneyType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GetBackCard.resx">
+      <DependentUpon>GetBackCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OverMaximumWithDraw.resx">
       <DependentUpon>OverMaximumWithDraw.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,8 +218,8 @@
     <EmbeddedResource Include="SuccessWithDraw.resx">
       <DependentUpon>SuccessWithDraw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WithDraw.resx">
-      <DependentUpon>WithDraw.cs</DependentUpon>
+    <EmbeddedResource Include="Withdraw.resx">
+      <DependentUpon>Withdraw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmChangePIN.resx">
       <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
@@ -228,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ValidatePin.resx">
       <DependentUpon>ValidatePin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WithdrawLimit.resx">
+      <DependentUpon>WithdrawLimit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -64,8 +64,8 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCardNo = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -538,26 +538,28 @@
             this.button12.TabIndex = 47;
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GUI.Properties.Resources.bgMain;
-            this.pictureBox1.Location = new System.Drawing.Point(1003, 507);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(217, 55);
-            this.pictureBox1.TabIndex = 48;
-            this.pictureBox1.TabStop = false;
-            // 
             // txtCardNo
             // 
             this.txtCardNo.BackColor = System.Drawing.Color.SeaGreen;
             this.txtCardNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCardNo.ForeColor = System.Drawing.Color.White;
-            this.txtCardNo.Location = new System.Drawing.Point(967, 568);
+            this.txtCardNo.Location = new System.Drawing.Point(979, 565);
+            this.txtCardNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCardNo.Multiline = true;
             this.txtCardNo.Name = "txtCardNo";
-            this.txtCardNo.Size = new System.Drawing.Size(282, 36);
-            this.txtCardNo.TabIndex = 49;
+            this.txtCardNo.Size = new System.Drawing.Size(375, 43);
+            this.txtCardNo.TabIndex = 53;
             this.txtCardNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GUI.Properties.Resources.bgMain;
+            this.pictureBox1.Location = new System.Drawing.Point(1027, 490);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(289, 68);
+            this.pictureBox1.TabIndex = 52;
+            this.pictureBox1.TabStop = false;
             // 
             // FormMain
             // 
@@ -604,7 +606,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -650,8 +651,8 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtCardNo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

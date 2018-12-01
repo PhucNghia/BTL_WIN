@@ -41,7 +41,7 @@ namespace DALs
             try
             {
                 int balance = getBalance(cardNo);
-                int newBalance = balance - money;    // trừ thêm lệ phí là 1100 vnd
+                int newBalance = balance - money - 1100;    // trừ thêm lệ phí là 1100 vnd
 
                 string queryUpdate = "update Account set Account.Balance = @newBalance " +
                     "from Account inner join Card on Account.AccountID = Card.AccountID where Card.CardNo = @cardNo ";
