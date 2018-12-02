@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,9 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBUL.cs" />
     <Compile Include="CardBUL.cs" />
+    <Compile Include="ExportReceipt.cs" />
     <Compile Include="LogBUL.cs" />
+    <Compile Include="ConfigBUL.cs" />
+    <Compile Include="MoneyBUL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockBUL.cs" />
+    <Compile Include="SuccessWithdrawBUL.cs" />
+    <Compile Include="WithdrawLimitBUL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DALs\DALs.csproj">

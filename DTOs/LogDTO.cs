@@ -12,7 +12,7 @@ namespace DTO
         private string logTypeID;
         private string aTMID;
         private string cardNo;
-        private string logDate;
+        private DateTime logDate;
         private decimal amount;
         private string details;
         private string cardNoTo;
@@ -69,7 +69,7 @@ namespace DTO
             }
         }
 
-        public string LogDate
+        public DateTime LogDate
         {
             get
             {
@@ -126,7 +126,7 @@ namespace DTO
 
         }
 
-        public LogDTO(string logID, string logTypeID, string aTMID, string cardNo, string logDate, decimal amount, 
+        public LogDTO(string logID, string logTypeID, string aTMID, string cardNo, DateTime logDate, decimal amount, 
             string details, string cardNoTo)
         {
             this.LogID = logID;

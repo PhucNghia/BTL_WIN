@@ -38,20 +38,20 @@
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = global::GUI.Properties.Resources.khong;
-            this.pictureBox2.Location = new System.Drawing.Point(656, 333);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(875, 410);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(140, 37);
+            this.pictureBox2.Size = new System.Drawing.Size(187, 46);
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.co;
-            this.pictureBox1.Location = new System.Drawing.Point(656, 273);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(875, 336);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(140, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(187, 46);
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
@@ -61,22 +61,25 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(149, 128);
+            this.label1.Location = new System.Drawing.Point(199, 158);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(497, 25);
+            this.label1.Size = new System.Drawing.Size(608, 31);
             this.label1.TabIndex = 15;
             this.label1.Text = "Bạn có muốn thực hiện giao dịch khác không?";
             // 
             // OtherTransaction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OtherTransaction";
-            this.Size = new System.Drawing.Size(810, 375);
+            this.Size = new System.Drawing.Size(1080, 462);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

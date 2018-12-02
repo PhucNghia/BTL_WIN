@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class WithDrawLimitDTO
+    public class WithdrawLimitDTO
     {
         private string wDID;
         private decimal value;
@@ -37,12 +37,12 @@ namespace DTO
             }
         }
 
-        public WithDrawLimitDTO()
+        public WithdrawLimitDTO()
         {
 
         }
 
-        public WithDrawLimitDTO(string wDID, decimal value)
+        public WithdrawLimitDTO(string wDID, decimal value)
         {
             this.WDID = wDID;
             this.Value = value;
