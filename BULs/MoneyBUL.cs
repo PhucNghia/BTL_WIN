@@ -40,7 +40,15 @@ namespace BULs
                         }
                     }
                 }
-                return String.Join("", arrChar);
+                string result = String.Join("", arrChar);
+                
+                if (result[0] == '-' && result[1] == ',')
+                {
+                    StringBuilder sb = new StringBuilder(result);
+                    sb.Remove(1, 1);
+                    result = sb.ToString();
+                }
+                return result;
             }
         }
     }

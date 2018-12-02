@@ -19,9 +19,9 @@ namespace DALs
                 string sql = "Select count(*) from Log";
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                int id = (Int32)cmd.ExecuteScalar();
+                int id = (Int32)cmd.ExecuteScalar() + 1;
                 conn.Close();
-                return "LOG" + id + 1;
+                return "LOG" + id;
             }
             catch (Exception)
             {

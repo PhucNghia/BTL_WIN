@@ -22,8 +22,10 @@ namespace GUI
         AccountBUL accountBUL = new AccountBUL();
         ConfigBUL configBUL = new ConfigBUL();
         WithdrawLimitBUL withdrawLimitBUL = new WithdrawLimitBUL();
+        ExportReceipt exportReceipt = new ExportReceipt();
 
         public static string state;
+        public static int moneyForReceipt = 0;
 
         public string getTextBoxCardNo()
         {
@@ -45,6 +47,7 @@ namespace GUI
             InitializeComponent();
             state = "ValidateCard";
             addUserControl(ValidateCard.Instance);
+
         }
 
         // ============= Process Button =============
@@ -224,6 +227,12 @@ namespace GUI
                 delay.Wait();
                 addUserControl(ValidateCard.Instance);
                 state = "ValidateCard";
+
+                // Export receipt
+                exportReceipt.exportReceipt(getTextBoxCardNo(), "Withdraw", moneyForReceipt);
+
+                clearTextBoxCardNo();
+                ValidatePin.Instance.clearTextBoxPin();
             }
         }
 
@@ -266,6 +275,8 @@ namespace GUI
                 delay.Wait();
                 addUserControl(ValidateCard.Instance);
                 state = "ValidateCard";
+                clearTextBoxCardNo();
+                ValidatePin.Instance.clearTextBoxPin();
             }
         }
         #endregion
@@ -571,6 +582,8 @@ namespace GUI
                     delay.Wait();
                     addUserControl(CustomWithDraw.Instance);
                     CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
+                    state = "CustomWithdraw";
+                    return;
                 }
                 else if (updateStock.Equals("ErrorSystem")) // Lỗi hệ thống (Hết tiền)
                 {
@@ -589,8 +602,10 @@ namespace GUI
                         SuccessWithDraw.Instance.setTextBoxBalance(accountBUL.getBalance(getTextBoxCardNo()));
                         state = "SuccessWithdraw";
                         createLog("LT001", "ATM001", cardNo, money, "Rút tiền hành công", "");
+                        moneyForReceipt = money;
                         return;
                     }
+                    CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
                 }
             }
             state = "Withdraw";

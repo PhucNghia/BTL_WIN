@@ -60,5 +60,29 @@ namespace DALs
                 return false;
             }
         }
+
+        public string getAccountID(string cardNo)
+        {
+            try
+            {
+                string accountID = "";
+                string query = "select Account.AccountID from Account join Card on Account.AccountID = Card.AccountID where Card.CardNo = @cardNo";
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    accountID = dr[0].ToString();
+                }
+                conn.Close();
+                return accountID;
+            }
+            catch
+            {
+                conn.Close();
+                return "";
+            }
+        }
     }
 }

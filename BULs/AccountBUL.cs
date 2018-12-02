@@ -32,5 +32,10 @@ namespace BULs
             else
                 return false;
         }
+
+        public string getAccountID(string cardNo)
+        {
+            return accountDAL.getAccountID(cardNo);
+        }
     }
 }
