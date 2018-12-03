@@ -30,14 +30,24 @@ namespace GUI
             InitializeComponent();
         }
 
-        public string getTextBoxCardNo()
-        {
-            return txtCardNo.Text;
-        }
+        //public string getTextBoxCardNo()
+        //{
+        //    return txtCardNo.Text;
+        //}
 
-        public Label getlblCheckMa()
+        //public void setTextBoxCardNo(string number)
+        //{
+        //    txtCardNo.Text += number;
+        //}
+
+        //public void clearTextBoxCardNo()
+        //{
+        //    txtCardNo.Text = "";
+        //}
+
+        public Label getlblChecCardNo()
         {
-            return lbCheckMaThe;
+            return lblCheckCardNo;
         }
 
         public Label getlblExpiredDate()
@@ -45,14 +55,9 @@ namespace GUI
             return lblExpiredDate;
         }
 
-        public void clearTextBoxCardNo()
+        private void ValidateCard_Load(object sender, EventArgs e)
         {
-            txtCardNo.Text = "";
-        }
 
-        public void setTextBoxCardNo(string number)
-        {
-            txtCardNo.Text += number;
         }
     }
 }

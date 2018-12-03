@@ -30,6 +30,37 @@ namespace GUI
             InitializeComponent();
         }
 
+        public string getTextBoxPin()
+        {
+            return txtPin.Text;
+        }
 
+        public void setTextBoxPin(string number)
+        {
+            int limitPin;
+            limitPin = getTextBoxPin().Length;
+            if(limitPin < 6)
+                txtPin.Text += number;
+        }
+
+        public void clearTextBoxPin()
+        {
+            txtPin.Text = "";
+        }
+
+        public Label getlblCheckPin()
+        {
+            return lblCheckPIN;
+        }
+
+        public Label getlblBlockCard()
+        {
+            return lblBlockCard;
+        }
+
+        private void ValidatePin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

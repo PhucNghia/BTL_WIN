@@ -46,11 +46,113 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardBlock.Designer.cs">
+      <DependentUpon>CardBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardBlockPinFail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardBlockPinFail.Designer.cs">
+      <DependentUpon>CardBlockPinFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePIN.Designer.cs">
+      <DependentUpon>ChangePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePINSuccess.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangePINSuccess.Designer.cs">
+      <DependentUpon>ChangePINSuccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckChangePIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckChangePIN.Designer.cs">
+      <DependentUpon>CheckChangePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckPINFail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CheckPINFail.Designer.cs">
+      <DependentUpon>CheckPINFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomWithDraw.Designer.cs">
+      <DependentUpon>CustomWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorSystem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorSystem.Designer.cs">
+      <DependentUpon>ErrorSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorMoneyType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ErrorMoneyType.Designer.cs">
+      <DependentUpon>ErrorMoneyType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetBackCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GetBackCard.Designer.cs">
+      <DependentUpon>GetBackCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverMaximumWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OverMaximumWithDraw.Designer.cs">
+      <DependentUpon>OverMaximumWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OverMinimumBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OverMinimumBalance.Designer.cs">
+      <DependentUpon>OverMinimumBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuccessWithDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SuccessWithDraw.Designer.cs">
+      <DependentUpon>SuccessWithDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Withdraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Withdraw.Designer.cs">
+      <DependentUpon>Withdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmChangePIN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfirmChangePIN.Designer.cs">
+      <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListService.Designer.cs">
+      <DependentUpon>ListService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtherTransaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OtherTransaction.Designer.cs">
+      <DependentUpon>OtherTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,8 +173,65 @@
     <Compile Include="ValidatePin.Designer.cs">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </Compile>
+    <Compile Include="WithdrawLimit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WithdrawLimit.Designer.cs">
+      <DependentUpon>WithdrawLimit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CardBlock.resx">
+      <DependentUpon>CardBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardBlockPinFail.resx">
+      <DependentUpon>CardBlockPinFail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePIN.resx">
+      <DependentUpon>ChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePINSuccess.resx">
+      <DependentUpon>ChangePINSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckChangePIN.resx">
+      <DependentUpon>CheckChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckPINFail.resx">
+      <DependentUpon>CheckPINFail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomWithDraw.resx">
+      <DependentUpon>CustomWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorSystem.resx">
+      <DependentUpon>ErrorSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorMoneyType.resx">
+      <DependentUpon>ErrorMoneyType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetBackCard.resx">
+      <DependentUpon>GetBackCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverMaximumWithDraw.resx">
+      <DependentUpon>OverMaximumWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OverMinimumBalance.resx">
+      <DependentUpon>OverMinimumBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuccessWithDraw.resx">
+      <DependentUpon>SuccessWithDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Withdraw.resx">
+      <DependentUpon>Withdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmChangePIN.resx">
+      <DependentUpon>ConfirmChangePIN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListService.resx">
+      <DependentUpon>ListService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherTransaction.resx">
+      <DependentUpon>OtherTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +244,10 @@
     <EmbeddedResource Include="ValidatePin.resx">
       <DependentUpon>ValidatePin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WithdrawLimit.resx">
+      <DependentUpon>WithdrawLimit.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,7 +259,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bgMain.jpg" />
@@ -112,9 +277,79 @@
       <Project>{21e8be39-aa48-4190-9b21-3394ffbcc4e9}</Project>
       <Name>BULs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DALs\DALs.csproj">
+      <Project>{41ff78aa-2a5b-4427-88a1-bca2cb09cd56}</Project>
+      <Name>DALs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruttien.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xemsodu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doipin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ttdvtaichinh.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dangkidichvu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chuyenkhoan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ttphidichvu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giaodichkhac.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\co.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khong.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thanhcongpin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nhapsaipin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thekhoa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blockfail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.000.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.000.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\500.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.500.000.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\số khác.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\co.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\khong.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
