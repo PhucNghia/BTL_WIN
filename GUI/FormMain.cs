@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Timers;
+using DTO;
 using BULs;
 using System.Diagnostics;
 
@@ -132,6 +133,7 @@ namespace GUI
             }
             else if (state.Equals("ChangePINSuccess"))
             {
+                createLog("LT004","ATM001", getTextBoxCardNo(), 0, "Success","");
                 state = "OtherTransaction";
                 addUserControl(OtherTransaction.Instance);
             }
@@ -139,7 +141,6 @@ namespace GUI
             {
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
                 withdraw(money);
-                state = "CustomWithdraw";
             }
         }
 
@@ -155,13 +156,31 @@ namespace GUI
             {
                 withdraw(100000);
             }
-        }
+            else if (state.Equals("PrintReceipt"))
+            {
+                //PrintReceiptComplete.Instance.CardNo = getTextBoxCardNo();
+                addUserControl(PrintReceiptComplete.Instance);
+                state = "PrintReceiptComplete";
 
+                string balance = accountBUL.getBalance(getTextBoxCardNo());
+                PrintReceiptComplete.Instance.setlbBalance(balance);
+                PrintReceiptComplete.Instance.LoadLog(getTextBoxCardNo());
+            }
+        }
+       
         private void btnLeft2_Click(object sender, EventArgs e)
         {
             if (state.Equals("Withdraw"))
             {
                 withdraw(1000000);
+            }
+            else if (state.Equals("ListService"))
+            {
+                addUserControl(CheckBalance.Instance);
+                state = "CheckBalance";
+                string balance = accountBUL.getBalance(getTextBoxCardNo());
+                CheckBalance.Instance.setlbBalance(balance);
+                createLog("LT003", "ATM001", getTextBoxCardNo(), 0, "Vắn tin thành công", "");
             }
         }
 
@@ -180,7 +199,16 @@ namespace GUI
 
         private void btnLeft4_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("ListService"))
+            {
+                addUserControl(PrintReceipt.Instance);
+                state = "PrintReceipt";
+            }
+            else if (state.Equals("PrintReceipt"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
         }
         #endregion
         #region btnRight
@@ -239,6 +267,32 @@ namespace GUI
                 clearTextBoxCardNo();
                 ValidatePin.Instance.clearTextBoxPin();
             }
+            else if (state.Equals("CheckBalance"))
+            {
+                Task delay = Task.Delay(3000);
+                addUserControl(ConfirmPrintReceipt.Instance);
+                delay.Wait();
+                
+                addUserControl(OtherDeal.Instance);
+                state = "OtherDeal";
+                exportReceipt.exportBalance(getTextBoxCardNo(), "CheckBalance");
+            }
+            else if (state.Equals("OtherDeal"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if(state.Equals("PrintReceiptComplete"))
+            {
+                PrintReceiptComplete.Instance.ClearPanel();
+                Task delay = Task.Delay(3000);
+                addUserControl(ReceiveReceipt.Instance);
+                delay.Wait();
+
+                addUserControl(OtherDeal.Instance);
+                state = "OtherDeal";
+                exportReceipt.exportReceipt1(getTextBoxCardNo(), "PrintReceiptCompelete");
+            }
         }
 
         private void btnRight4_Click(object sender, EventArgs e)
@@ -282,6 +336,23 @@ namespace GUI
                 state = "ValidateCard";
                 clearTextBoxCardNo();
                 ValidatePin.Instance.clearTextBoxPin();
+            }
+            else if (state.Equals("CheckBalance"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if(state.Equals("OtherDeal"))
+            {
+                addUserControl(ValidateCard.Instance);
+                state = "ValidateCard";
+                clearTextBoxCardNo();
+            }
+            else if (state.Equals("PrintReceiptComplete"))
+            {
+                PrintReceiptComplete.Instance.ClearPanel();
+                addUserControl(ListService.Instance);
+                state = "ListService";
             }
         }
         #endregion
@@ -491,7 +562,6 @@ namespace GUI
                 ChangePIN.Instance.getcheckLB6so();
                 ChangePIN.Instance.clearNewPIN();
             }
-
         }
 
         private void changePIN()
@@ -535,6 +605,7 @@ namespace GUI
         }
 
         // function to create log
+
         private void createLog(string logType, string atmId, string cardNo, decimal amount, string details, string cardTo)
         {
             logBUL.createLog(logType, atmId, cardNo, amount, details, cardTo);

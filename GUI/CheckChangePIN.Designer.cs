@@ -109,18 +109,19 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Vui lòng nhập số PIN hiện nay";
             // 
-            // CheckPIN
+            // CheckChangePIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.lblCheckPIN);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtPin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CheckPIN";
+            this.Name = "CheckChangePIN";
             this.Size = new System.Drawing.Size(810, 375);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

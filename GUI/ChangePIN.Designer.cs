@@ -114,6 +114,7 @@
             this.BackgroundImage = global::GUI.Properties.Resources.bgMain;
             this.Controls.Add(this.lbPinFail);
             this.Controls.Add(this.lb6so);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

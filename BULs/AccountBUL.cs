@@ -37,5 +37,10 @@ namespace BULs
         {
             return accountDAL.getAccountID(cardNo);
         }
+
+        public int getBalanceInt(string cardNo)
+        {
+            return accountDAL.getBalance(cardNo);
+        }
     }
 }

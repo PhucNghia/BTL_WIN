@@ -10,29 +10,33 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class ListService : UserControl
+    public partial class CheckBalance : UserControl
     {
-        private static ListService _instance;
-        public static ListService Instance
+        private static CheckBalance _instance;
+        public static CheckBalance Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ListService();
+                    _instance = new CheckBalance();
                 }
-                return _instance;
+                return _instance;        
             }
         }
 
-        public ListService()
+        public CheckBalance()
         {
             InitializeComponent();
         }
-
-        private void ListService_Load(object sender, EventArgs e)
+        public Label getlbBalance()
         {
-
+            return lbBalance;
         }
+        public void setlbBalance(string balance)
+        {
+            lbBalance.Text = balance + " VND";
+        }
+
     }
 }
