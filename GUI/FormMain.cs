@@ -23,13 +23,14 @@ namespace GUI
         ConfigBUL configBUL = new ConfigBUL();
         WithdrawLimitBUL withdrawLimitBUL = new WithdrawLimitBUL();
         ExportReceipt exportReceipt = new ExportReceipt();
-
+        private string cardNo = null;
         public static string state;
         public static int moneyForReceipt = 0;
 
         public string getTextBoxCardNo()
         {
-            return txtCardNo.Text;
+            //return txtCardNo.Text;
+            return cardNo;
         }
 
         public void setTextBoxCardNo(string number)
@@ -47,7 +48,8 @@ namespace GUI
             InitializeComponent();
             state = "ValidateCard";
             addUserControl(ValidateCard.Instance);
-
+            txtCardNo.Focus();
+            
         }
 
         // ============= Process Button =============
@@ -74,7 +76,7 @@ namespace GUI
             {
                 ConfirmChangePIN.Instance.clearNewPIN();
             }
-            else if (state.Equals("CustomWithDraw"))
+            else if (state.Equals("CustomWithdraw"))
             {
                 CustomWithDraw.Instance.clearTextBoxCustomWithDraw();
             }
@@ -109,6 +111,7 @@ namespace GUI
         {
             if (state.Equals("ValidateCard"))
             {
+                cardNo = txtCardNo.Text;
                 checkCardNo();
             }
             else if (state.Equals("ValidatePin"))
@@ -136,6 +139,7 @@ namespace GUI
             {
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
                 withdraw(money);
+                state = "CustomWithdraw";
             }
         }
 
@@ -200,6 +204,7 @@ namespace GUI
         {
             if (state.Equals("ValidateCard"))
             {
+                cardNo = txtCardNo.Text;
                 checkCardNo();
             }
             else if (state.Equals("ValidatePin"))
@@ -229,7 +234,7 @@ namespace GUI
                 state = "ValidateCard";
 
                 // Export receipt
-                exportReceipt.exportReceipt(getTextBoxCardNo(), "Withdraw", moneyForReceipt);
+                exportReceipt.exportReceiptWithdraw(getTextBoxCardNo(), moneyForReceipt);
 
                 clearTextBoxCardNo();
                 ValidatePin.Instance.clearTextBoxPin();
@@ -367,7 +372,7 @@ namespace GUI
             {
                 ConfirmChangePIN.Instance.setNewPIN(number);
             }
-            else if (state.Equals("CustomWithDraw"))
+            else if (state.Equals("CustomWithdraw"))
                 CustomWithDraw.Instance.setTextBoxCustomWithDrawn(number);
         }
 
@@ -383,6 +388,7 @@ namespace GUI
                 {
                     state = "ValidatePin";
                     addUserControl(ValidatePin.Instance);
+                    clearTextBoxCardNo();
                 }
                 else
                 {
@@ -412,6 +418,7 @@ namespace GUI
                 state = "ListService";
                 addUserControl(ListService.Instance);
                 cardBUL.updateAttemptStatus(cardNo, true);
+                ValidatePin.Instance.clearTextBoxPin();
             }
             else if (checkPin && !checkStatus)
             {
@@ -457,22 +464,18 @@ namespace GUI
             {
                 state = "ChangePIN";
                 addUserControl(ChangePIN.Instance);
-
             }
 
             else if (!checkPin)
             {
-
                 CheckChangePIN.Instance.getlblCheckPin().Visible = true;
                 CheckChangePIN.Instance.clearTextBoxPin();
 
             }
-
         }
 
         private void confirmChangePIN()
         {
-           
             string pin = ChangePIN.Instance.getNewPIN();
            
             if (pin.Length == 6)
@@ -481,7 +484,6 @@ namespace GUI
                 addUserControl(ConfirmChangePIN.Instance);
                 ConfirmChangePIN.Instance.clearNewPIN();
             }
-           
             else
             {
                 state = "ChangePIN";
@@ -498,24 +500,24 @@ namespace GUI
             string confirmPin = ConfirmChangePIN.Instance.getNewPIN();
             string pin = ChangePIN.Instance.getNewPIN();
             
-                bool changePin = cardBUL.changePIN(cardNo, confirmPin);
-                if (changePin && confirmPin.Length == 6 && pin == confirmPin)
-                {
-                    state = "ChangePINSuccess";
-                    addUserControl(ChangePINSuccess.Instance);
-                    createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "Đổi pin thành công", "");
+            bool changePin = cardBUL.changePIN(cardNo, confirmPin);
+            if (changePin && confirmPin.Length == 6 && pin == confirmPin)
+            {
+                state = "ChangePINSuccess";
+                addUserControl(ChangePINSuccess.Instance);
+                createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "Đổi pin thành công", "");
 
-                    Thread.Sleep(3000);
-                    state = "OtherTransaction";
-                    addUserControl(OtherTransaction.Instance);
-                }
-                else if(changePin && confirmPin.Length == 6 && pin != confirmPin)
-                {
-                    state = "ChangePIN";
-                    addUserControl(ChangePIN.Instance);
-                    ChangePIN.Instance.getPinFail();                   
-                    ChangePIN.Instance.clearNewPIN();
-                }
+                Thread.Sleep(3000);
+                state = "OtherTransaction";
+                addUserControl(OtherTransaction.Instance);
+            }
+            else if(changePin && confirmPin.Length == 6 && pin != confirmPin)
+            {
+                state = "ChangePIN";
+                addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.getPinFail();                   
+                ChangePIN.Instance.clearNewPIN();
+            }
             else if (changePin && confirmPin.Length != 6 && pin != confirmPin)
             {
                 state = "ChangePIN";
@@ -575,7 +577,7 @@ namespace GUI
             {
                 string updateStock = stockBUL.updateQuantity(money);
 
-                if (updateStock.Equals("ErrorMoneyType"))   // sai kiểu tiền
+                if (updateStock.Equals("ErrorMoneyType"))   // sai kiểu tiền và bội số
                 {
                     Task delay = Task.Delay(3000);
                     addUserControl(ErrorMoneyType.Instance);
@@ -610,6 +612,5 @@ namespace GUI
             }
             state = "Withdraw";
         }
-
     }
 }
