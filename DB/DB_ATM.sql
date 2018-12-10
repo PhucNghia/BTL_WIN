@@ -166,10 +166,10 @@ insert into LogType values('LT002', 'Transfer');
 insert into LogType values('LT003', 'Check balance');
 insert into LogType values('LT004', 'Change PIN');
 ---------------------------------
-insert into Log values('LOG006', 'LT001', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), 500000, N'Rút tiền thành công', '');
-insert into Log values('LOG002', 'LT002', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), 1000000, N'Chuyển tiền thành công', '1234567891012');
-insert into Log values('LOG003', 'LT003', 'ATM001', '1234567891013', Convert(datetime, getdate(), 5), 1000, N'Vấn tin thành công', '');
-insert into Log values('LOG004', 'LT004', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), null, N'Đổi pin thành công', '');
+insert into Log values('LOG1', 'LT001', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), 500000, N'Rút tiền thành công', '');
+insert into Log values('LOG2', 'LT002', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), 1000000, N'Chuyển tiền thành công', '1234567891012');
+insert into Log values('LOG3', 'LT003', 'ATM001', '1234567891013', Convert(datetime, getdate(), 5), 1000, N'Vấn tin thành công', '');
+insert into Log values('LOG4', 'LT004', 'ATM001', '1234567891011', Convert(datetime, getdate(), 5), null, N'Đổi pin thành công', '');
 
 --------------------------------
 select * from Config

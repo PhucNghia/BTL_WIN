@@ -17,7 +17,7 @@ namespace BULs
             
             if(multiples == 0)
                 return "ErrorSystem";
-            if (money > 5000000 || money % multiples != 0 || money < 50000)
+            if (money % multiples != 0 || money < 50000)
                 return "ErrorMoneyType";
 
             string totalMoney = customSheet(money);
@@ -49,8 +49,6 @@ namespace BULs
             for (int i = money.Length - 1; i >= 0; i--)
             {
                 int quantity = getQuantity("ATM001", getMoneyId(money[i]));
-                int currentMoney = quantity * money[i];
-
                 if (quantity > 0)
                     return money[i];
             }

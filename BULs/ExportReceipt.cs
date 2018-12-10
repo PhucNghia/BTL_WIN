@@ -15,7 +15,7 @@ namespace BULs
         AccountBUL accountBUL = new AccountBUL();
         MoneyBUL moneyBUL = new MoneyBUL();
         private static int indexName = 0;
-        public void exportReceipt(string cardNo, string status, int moneyForReceipt)
+        public void exportReceiptWithdraw(string cardNo, int moneyForReceipt)
         {
             string atmID = "ATM001";
             string accountID = accountBUL.getAccountID(cardNo);
@@ -34,20 +34,17 @@ namespace BULs
             string imgURL = "", path = "";
             iTextSharp.text.Image img = null;
 
-            if (status == "Withdraw")
-            {
-                // đường đẫn đọc ảnh mẫu
-                imgURL = @"D:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\rut tien.jpg";
-                img = iTextSharp.text.Image.GetInstance(imgURL);
+            // đường đẫn đọc ảnh mẫu
+            imgURL = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\rut tien.jpg";
+            img = iTextSharp.text.Image.GetInstance(imgURL);
 
-                // đường dẫn ghi file pdf
-                string fileName = "rut tien" + indexName++;
-                path = @"D:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\rut tien" + indexName + ".pdf";
-                PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
+            // đường dẫn ghi file pdf
+            indexName++;
+            path = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\rut tien" + indexName + ".pdf";
+            PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
 
-                fees = "1.000";
-                vat = "100";
-            }
+            fees = "1.000";
+            vat = "100";
 
             doc.Open();
 
