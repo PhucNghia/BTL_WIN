@@ -110,10 +110,10 @@ create table Log(
 ---------------------------------
 insert into Config values('CONFIG001', '2018/11/13', 50000, 17500000, 5);
 ---------------------------------
-insert into Customer values('1041260143', N'Nguyễn Hoàng Nam Anh', '0382681682', 'namanh@gmail.com', N'Vĩnh Phúc');
-insert into Customer values('1041260144', N'Hoàng Văn Hậu', '0382681682', 'hoanghau@gmail.com', N'Hải Dương');
-insert into Customer values('1041260145', N'Phúc Ngọc Nghĩa', '0382305339', 'ngocnghia@gmail.com', N'Tuyên Quang');
-insert into Customer values('1041260146', N'Nguyễn Thị Sim', '0382681682', 'nguyensim@gmail.com', N'Lào Cai');
+insert into Customer values('1041260143', 'NGUYEN HOANG NAM ANH', '0382681682', 'namanh@gmail.com', N'Vĩnh Phúc');
+insert into Customer values('1041260144', 'HOANG VAN HAU', '0382681682', 'hoanghau@gmail.com', N'Hải Dương');
+insert into Customer values('1041260145', 'PHUC NGOC NGHIA', '0382305339', 'ngocnghia@gmail.com', N'Tuyên Quang');
+insert into Customer values('1041260146', 'NGUYEN THI SIM', '0382681682', 'nguyensim@gmail.com', N'Lào Cai');
 ---------------------------------
 insert into OverDraft values('OD001', 200000);
 ---------------------------------
@@ -184,6 +184,8 @@ select * from Account
 ---------------------------------
 select * from Card
 ---------------------------------
+select * from Log
+---------------------------------
 select * from Money
 ---------------------------------
 select * from ATM
@@ -192,7 +194,6 @@ select * from Stock
 ---------------------------------
 select * from LogType
 ---------------------------------
-select * from Log
 
 select Log.amount, Log.logdate from Card inner join Log on Card.CardNo = Log.CardNo
 	inner join ATM on ATM.ATMID = Log.ATMID
@@ -201,8 +202,14 @@ select Log.amount, Log.logdate from Card inner join Log on Card.CardNo = Log.Car
 	And LogDate >= '2018-12-01 00:00:00' and LogDate <= '2018-12-01 23:59:59'
 	select getdate()
 
+
 	select sum(Log.Amount) from Card inner join Log on Card.CardNo = Log.CardNo 
                     inner join ATM on ATM.ATMID = Log.ATMID
                     inner join LogType on LogType.LogTypeID = Log.LogTypeID
-                    where LogType.LogTypeID = 'LT001' And ATM.ATMID = 'ATM001' And Card.CardNo = '1234567891011' And
+                    where LogType.LogTypeID = 'LT002' And ATM.ATMID = 'ATM001' And Card.CardNo = '1234567891011' And
                     LogDate >= '2018-12-01 00:00:00' and LogDate <= '2018-12-01 23:59:59'
+---------------------------------
+select Customer.Name from Account inner join Customer 
+on Account.CustID = Customer.CustomerID inner join Card 
+on Account.AccountID = Card.AccountID 
+where CardNo = 1234567891013

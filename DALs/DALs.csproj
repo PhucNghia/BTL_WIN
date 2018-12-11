@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
     <Compile Include="CardDAL.cs" />
+    <Compile Include="CustomerDAL.cs" />
     <Compile Include="LogDAL.cs" />
     <Compile Include="ConfigDAL.cs" />
     <Compile Include="OverDraftDAL.cs" />

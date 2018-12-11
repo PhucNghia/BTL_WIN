@@ -7,26 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BULs;
 namespace GUI
 {
-    public partial class OtherTransaction : UserControl
+    public partial class Success : UserControl
     {
-        private static OtherTransaction _instance;
+        private static Success _instance;
+        MoneyBUL moneyBUL = new MoneyBUL();
 
+        public void setLabelBalance(string str)
+        {
+            lbBalance.Text = moneyBUL.formatMoney(int.Parse(str));
+        }
 
-        public OtherTransaction()
+        public Success()
         {
             InitializeComponent();
         }
 
-        public static OtherTransaction Instance
+        public static Success Instance
         {
             get
             {
-                if (_instance == null)
+                if(_instance == null)
                 {
-                    _instance = new OtherTransaction();
+                    _instance = new Success();
                 }
                 return _instance;
             }
