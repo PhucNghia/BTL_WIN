@@ -44,7 +44,7 @@ namespace BULs
 
             // đường dẫn ghi file pdf
             indexName++;
-            path = @"C:\Users\Admin\Desktop\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\rut tien" + indexName + ".pdf";
+            path = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\rut tien" + indexName + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
 
             fees = "1.000";
@@ -99,12 +99,12 @@ namespace BULs
             iTextSharp.text.Image img = null;
 
             // đường đẫn đọc ảnh mẫu
-            imgURL = @"C:\Users\Admin\Desktop\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\bien lai.jpg";
+            imgURL = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\bien lai.jpg";
             img = iTextSharp.text.Image.GetInstance(imgURL);
 
             // đường dẫn ghi file pdf
             indexName++;
-            path = @"C:\Users\Admin\Desktop\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\bien lai" + indexName + ".pdf";
+            path = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\bien lai" + indexName + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
 
             doc.Open();
@@ -155,12 +155,12 @@ namespace BULs
             iTextSharp.text.Image img = null;
 
             // đường đẫn đọc ảnh mẫu
-            imgURL = @"C:\Users\Admin\Desktop\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\in sao ke.jpg";
+            imgURL = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\mẫu\in sao ke.jpg";
             img = iTextSharp.text.Image.GetInstance(imgURL);
 
             // đường dẫn ghi file pdf
             string fileName = "bienlai" + indexName++;
-            path = @"C:\Users\Admin\Desktop\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\in sao ke" + indexName + ".pdf";
+            path = @"E:\NAM 4 KY 1\WIN_FORM\BAI TAP LON\BTL_WIN\YÊUCẦU + BIÊNLAI\BIÊN LAI\in sao ke" + indexName + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
 
             doc.Open();

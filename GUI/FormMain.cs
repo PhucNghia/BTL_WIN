@@ -275,6 +275,7 @@ namespace GUI
             {
                 state = "CheckChangePIN";
                 addUserControl(CheckChangePIN.Instance);
+                CheckChangePIN.Instance.clearTextBoxPin();
             }
             else if (state.Equals("Withdraw"))
             {
@@ -470,6 +471,7 @@ namespace GUI
             if (state.Equals("ValidateCard"))
             {
                 clearTextBoxCardNo();
+                ValidateCard.Instance.getlblChecCardNo().Visible = false;
             }
             // state validate PIN
             else if (state.Equals("ValidatePin"))
@@ -719,6 +721,7 @@ namespace GUI
             {
                 state = "ChangePIN";
                 addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.clearNewPIN();
             }
             else if (!checkPin)
             {
@@ -755,6 +758,7 @@ namespace GUI
             {
                 state = "ChangePINSuccess";
                 addUserControl(ChangePINSuccess.Instance);
+                ChangePIN.Instance.clearNewPIN();
                 createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "Đổi pin thành công", "");
                 Thread.Sleep(3000);
                 state = "OtherTransaction";
