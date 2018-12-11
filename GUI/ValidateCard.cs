@@ -30,21 +30,6 @@ namespace GUI
             InitializeComponent();
         }
 
-        //public string getTextBoxCardNo()
-        //{
-        //    return txtCardNo.Text;
-        //}
-
-        //public void setTextBoxCardNo(string number)
-        //{
-        //    txtCardNo.Text += number;
-        //}
-
-        //public void clearTextBoxCardNo()
-        //{
-        //    txtCardNo.Text = "";
-        //}
-
         public Label getlblChecCardNo()
         {
             return lblCheckCardNo;
