@@ -32,7 +32,6 @@ namespace GUI
 
         public string getTextBoxCardNo()
         {
-            //return txtCardNo.Text;
             return cardNo;
         }
 
@@ -467,29 +466,21 @@ namespace GUI
         private void btnRight4_Click(object sender, EventArgs e)
         {
             // state validate card
-
             if (state.Equals("ValidateCard"))
             {
                 clearTextBoxCardNo();
                 ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                ValidateCard.Instance.getlblExpiredDate().Visible = false;
             }
             // state validate PIN
             else if (state.Equals("ValidatePin"))
             {
-                ValidatePin.Instance.clearTextBoxPin();
                 ValidatePin.Instance.getlblBlockCard().Visible = false;
                 ValidatePin.Instance.getlblCheckPin().Visible = false;
 
-                if (!panelMain.Controls.Contains(ValidateCard.Instance))
-                {
-                    panelMain.Controls.Add(ValidatePin.Instance);
-                    ValidateCard.Instance.Dock = DockStyle.Fill;
-                    ValidateCard.Instance.BringToFront();
-                }
-                else
-                {
-                    ValidateCard.Instance.BringToFront();
-                }
+                addUserControl(ValidateCard.Instance);
+                ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                ValidateCard.Instance.getlblExpiredDate().Visible = false;
                 clearTextBoxCardNo();
                 state = "ValidateCard";
             }
@@ -519,15 +510,11 @@ namespace GUI
                 state = "ListService";
                 addUserControl(ListService.Instance);
             }
-            else if (state.Equals("AgreeTransaction"))
+            else if (state.Equals("AgreeTransaction") || state.Equals("CheckBalance") ||
+                state.Equals("CheckChangePIN"))
             {
                 state = "ListService";
                 addUserControl(ListService.Instance);
-            }
-            else if (state.Equals("CheckBalance"))
-            {
-                addUserControl(ListService.Instance);
-                state = "ListService";
             }
             else if (state.Equals("OtherDeal"))
             {
@@ -540,6 +527,11 @@ namespace GUI
                 PrintReceiptComplete.Instance.ClearPanel();
                 addUserControl(ListService.Instance);
                 state = "ListService";
+            }
+            else if (state.Equals("OtherTransaction"))
+            {
+                state = "ValidateCard";
+                addUserControl(ValidateCard.Instance);
             }
         }
         #endregion
@@ -608,6 +600,14 @@ namespace GUI
             {
                 userControl.BringToFront();
             }
+
+            if (userControl == ValidateCard.Instance)
+                txtCardNo.Enabled = true;
+            else
+                txtCardNo.Enabled = false;
+
+            if (userControl == ValidatePin.Instance)
+                ValidatePin.Instance.clearTextBoxPin();
         }
 
         // Function enter Number to Texbox
@@ -877,9 +877,7 @@ namespace GUI
             {
                 CashTransfer.Instance.setTextBoxCardNoToName("Tên tài khoản không hợp lệ");
                 CashTransfer.Instance.setTextBoxCardNoName("Tên tài khoản không hợp lệ");
-                //string nameCardNo = customerBUL.getNameCustomer(CashTransfer.Instance.getTextBoxCardNo().Trim());
                 string nameCardNoTo = customerBUL.getNameCustomer(CashTransfer.Instance.getTextBoxCardNoTo().Trim());
-                //CashTransfer.Instance.setTextBoxCardNoName(nameCardNo);
                 CashTransfer.Instance.setTextBoxCardNoToName(nameCardNoTo);
                 CashTransfer.Instance.ShowLabel();
 
@@ -889,7 +887,6 @@ namespace GUI
                 {
                     CashTransfer.Instance.ShowImage();
                     string textboxMoney = CashTransfer.Instance.getTextBoxMoney();
-                    //bool checkTextBoxMoney = cardBUL.checkCardNo(CashTransfer.Instance.getTextBoxMoney());
                     if (textboxMoney != null)
                     {
                         state = "CashTransMoneyferFail1";
@@ -947,6 +944,11 @@ namespace GUI
             else
                 state = "CashTransMoneyferFai2";
             return false;
+        }
+
+        private void txtCardNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

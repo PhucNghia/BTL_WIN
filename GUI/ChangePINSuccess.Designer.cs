@@ -32,11 +32,13 @@
             // 
             // ChangePINSuccess
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.thanhcongpin;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ChangePINSuccess";
-            this.Size = new System.Drawing.Size(799, 375);
+            this.Size = new System.Drawing.Size(1065, 462);
             this.ResumeLayout(false);
 
         }

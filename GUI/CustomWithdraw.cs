@@ -47,12 +47,20 @@ namespace GUI
 
         public void setTextBoxCustomWithDrawn(string number)
         {
-            txtCustomWithDraw.Text += number;
+            int limitMoney;
+            limitMoney = txtCustomWithDraw.Text.Length;
+            if (limitMoney < 8)
+                txtCustomWithDraw.Text += number;
         }
 
         public void clearTextBoxCustomWithDraw()
         {
             txtCustomWithDraw.Text = "";
+        }
+
+        private void txtCustomWithDraw_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

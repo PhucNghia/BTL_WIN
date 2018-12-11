@@ -32,11 +32,13 @@
             // 
             // CheckPINFail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GUI.Properties.Resources.nhapsaipin;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CheckPINFail";
-            this.Size = new System.Drawing.Size(797, 375);
+            this.Size = new System.Drawing.Size(1063, 462);
             this.ResumeLayout(false);
 
         }
