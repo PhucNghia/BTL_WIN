@@ -135,5 +135,19 @@ namespace GUI
             
         }
 
+        private void txtCardNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void txtCardNoTo_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
+
+        private void txtMoney_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
     }
 }

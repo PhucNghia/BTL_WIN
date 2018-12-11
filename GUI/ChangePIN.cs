@@ -77,5 +77,10 @@ namespace GUI
             label3.Visible = true;
             txtPin.Visible = true;
         }
+
+        private void txtPin_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
     }
 }

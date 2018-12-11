@@ -52,6 +52,9 @@ namespace GUI
             return lblCheckPIN;
         }
 
-        
+        private void txtPin_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+        }
     }
 }
