@@ -37,5 +37,21 @@ namespace BULs
         {
             return accountDAL.getAccountID(cardNo);
         }
+
+        public string getBalanceInt(string cardNo)
+        {
+            int balance = accountDAL.getBalance(cardNo);
+            return moneyBUL.formatMoney(balance);
+        }
+
+        public bool compareBalance(int money, string cardNo)
+        {  
+            return accountDAL.compareBalance(money, cardNo);
+        }
+
+        public int updateBalance(int money, string cardNo, string cardNoTo, int transferFee) 
+        {
+            return accountDAL.UpdateBalance(money, cardNo, cardNoTo, transferFee);
+        }
     }
 }

@@ -90,6 +90,7 @@
             this.txtCustomWithDraw.Size = new System.Drawing.Size(201, 43);
             this.txtCustomWithDraw.TabIndex = 46;
             this.txtCustomWithDraw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCustomWithDraw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomWithDraw_KeyDown);
             // 
             // label4
             // 

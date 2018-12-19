@@ -13,6 +13,13 @@ namespace GUI
     public partial class OtherTransaction : UserControl
     {
         private static OtherTransaction _instance;
+
+
+        public OtherTransaction()
+        {
+            InitializeComponent();
+        }
+
         public static OtherTransaction Instance
         {
             get
@@ -23,10 +30,6 @@ namespace GUI
                 }
                 return _instance;
             }
-        }
-        public OtherTransaction()
-        {
-            InitializeComponent();
         }
     }
 }

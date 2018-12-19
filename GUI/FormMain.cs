@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Timers;
+using DTOs;
 using BULs;
-using System.Diagnostics;
 
 namespace GUI
 {
@@ -24,12 +24,14 @@ namespace GUI
         WithdrawLimitBUL withdrawLimitBUL = new WithdrawLimitBUL();
         ExportReceipt exportReceipt = new ExportReceipt();
         private string cardNo = null;
+        CustomerBUL customerBUL = new CustomerBUL();
+        MoneyBUL monney = new MoneyBUL();
+
         public static string state;
         public static int moneyForReceipt = 0;
 
         public string getTextBoxCardNo()
         {
-            //return txtCardNo.Text;
             return cardNo;
         }
 
@@ -49,7 +51,7 @@ namespace GUI
             state = "ValidateCard";
             addUserControl(ValidateCard.Instance);
             txtCardNo.Focus();
-            
+
         }
 
         // ============= Process Button =============
@@ -57,7 +59,6 @@ namespace GUI
         {
             if (state.Equals("ValidateCard"))
             {
-                // ValidateCard.Instance.clearTextBoxCardNo();
                 clearTextBoxCardNo();
             }
             else if (state.Equals("ValidatePin"))
@@ -85,8 +86,8 @@ namespace GUI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             // back to List service 
-            if (state.Equals("ChangePIN") || state.Equals("CheckChangePIN") || state.Equals("ChangePINSuccess") || state.Equals("CheckPINFail")
-                || state.Equals("CustomWithDraw"))
+            if (state.Equals("ChangePIN") || state.Equals("CheckChangePIN") || state.Equals("ChangePINSuccess")
+                || state.Equals("CheckPINFail") || state.Equals("CustomWithDraw"))
             {
                 ChangePIN.Instance.clearNewPIN();
                 ChangePIN.Instance.reset();
@@ -100,14 +101,26 @@ namespace GUI
                 addUserControl(ValidateCard.Instance);
                 state = "ValidateCard";
             }
-            else if (state.Equals("Withdraw") || state.Equals("CustomWithdraw"))
+            else if (state.Equals("Withdraw") || state.Equals("CustomWithdraw") ||
+                state.Equals("CashTransferCard") || state.Equals("CashTransferEnterMoney"))
             {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("CashTransMoneyferFail1") || state.Equals("CashTransMoneyferFail2") ||
+                state.Equals("DisagreeTransaction") || state.Equals("AgreeBill"))
+            {
+                CashTransfer.Instance.clearTextBoxCardNo();
+                CashTransfer.Instance.clearTextBoxCardNoName();
+                CashTransfer.Instance.clearTextBoxCardNoTo();
+                CashTransfer.Instance.clearTextBoxCardNoToName();
+                CashTransfer.Instance.clearTextBoxMoney();
                 addUserControl(ListService.Instance);
                 state = "ListService";
             }
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
+        private async void btnEnter_Click(object sender, EventArgs e)
         {
             if (state.Equals("ValidateCard"))
             {
@@ -132,6 +145,7 @@ namespace GUI
             }
             else if (state.Equals("ChangePINSuccess"))
             {
+                createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "Success", "");
                 state = "OtherTransaction";
                 addUserControl(OtherTransaction.Instance);
             }
@@ -139,7 +153,78 @@ namespace GUI
             {
                 int money = CustomWithDraw.Instance.getTextBoxCustomWithDraw();
                 withdraw(money);
-                state = "CustomWithdraw";
+            }
+            else if (state.Equals("CashTransferCard"))
+            {
+                transfer();
+            }
+            else if (state.Equals("CashTransferEnterMoney"))
+            {
+                checkMoneyTransfer();
+            }
+            else if (state.Equals("CashTransferMoneySuccess"))
+            {
+                Success.Instance.setLabelBalance(accountBUL.updateBalance(
+                    Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney()),
+                    CashTransfer.Instance.getTextBoxCardNo(),
+                    CashTransfer.Instance.getTextBoxCardNoTo(),
+                    3300) + "");
+                createLog("LT002", "ATM001", CashTransfer.Instance.getTextBoxCardNo(),
+                    Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney()), "Chuyển khoản thành công", CashTransfer.Instance.getTextBoxCardNoTo());
+                addUserControl(Success.Instance);
+                state = "AgreeBill";
+            }
+            else if (state.Equals("AgreeBill"))
+            {
+                addUserControl(Bill.Instance);
+                exportReceipt.exportReceiptCashTransfer(
+                 CashTransfer.Instance.getTextBoxCardNo(),
+                 CashTransfer.Instance.getTextBoxCardNoName(),
+                 CashTransfer.Instance.getTextBoxCardNoTo(),
+                 CashTransfer.Instance.getTextBoxCardNoToName(),
+                 Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney())
+                 );
+                await Task.Delay(3000);
+                addUserControl(OtherTransaction.Instance);
+
+                state = "AgreeTransaction";
+            }
+            else if (state.Equals("AgreeTransaction"))
+            {
+                CashTransfer.Instance.clearTextBoxCardNo();
+                CashTransfer.Instance.clearTextBoxCardNoName();
+                CashTransfer.Instance.clearTextBoxCardNoTo();
+                CashTransfer.Instance.clearTextBoxCardNoToName();
+                CashTransfer.Instance.clearTextBoxMoney();
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("CashTransMoneyferFail1"))
+            {
+                Fail.Instance.clearLabel1();
+                Fail.Instance.clearLabel2();
+                Fail.Instance.clearLabel3();
+                Fail.Instance.setLabel1("Xin lỗi, giao dịch không thành công");
+                Fail.Instance.setLabel2("Xin vui lòng kiểm tra lại");
+                Fail.Instance.setLabel3("(Không được phép chuyển tiền vào tài khoản USD)");
+
+                Fail.Instance.ShowErrorChangLog();
+                addUserControl(Fail.Instance);
+                state = "DisagreeBill1";
+            }
+            else if (state.Equals("CashTransMoneyferFail2"))
+            {
+                Fail.Instance.clearLabel1();
+                Fail.Instance.clearLabel2();
+                Fail.Instance.clearLabel3();
+
+                Fail.Instance.setLabel1("Số tiền trong TK không đủ cho giao dịch rút tiền\n");
+                Fail.Instance.setLabel2("\t\tSố dư hiện có trong tài khoản :\n" +
+                   accountBUL.getBalanceInt(CashTransfer.Instance.getTextBoxCardNo()));
+
+                Fail.Instance.ShowErrorChangLog();
+                addUserControl(Fail.Instance);
+                state = "DisagreeBill2";
             }
         }
 
@@ -155,6 +240,16 @@ namespace GUI
             {
                 withdraw(100000);
             }
+            else if (state.Equals("PrintReceipt"))
+            {
+                //PrintReceiptComplete.Instance.CardNo = getTextBoxCardNo();
+                addUserControl(PrintReceiptComplete.Instance);
+                state = "PrintReceiptComplete";
+
+                string balance = accountBUL.getBalance(getTextBoxCardNo());
+                PrintReceiptComplete.Instance.setlbBalance(balance);
+                PrintReceiptComplete.Instance.LoadLog(getTextBoxCardNo());
+            }
         }
 
         private void btnLeft2_Click(object sender, EventArgs e)
@@ -162,6 +257,14 @@ namespace GUI
             if (state.Equals("Withdraw"))
             {
                 withdraw(1000000);
+            }
+            else if (state.Equals("ListService"))
+            {
+                addUserControl(CheckBalance.Instance);
+                state = "CheckBalance";
+                string balance = accountBUL.getBalance(getTextBoxCardNo());
+                CheckBalance.Instance.setlbBalance(balance);
+                createLog("LT003", "ATM001", getTextBoxCardNo(), 0, "Vắn tin thành công", "");
             }
         }
 
@@ -171,6 +274,7 @@ namespace GUI
             {
                 state = "CheckChangePIN";
                 addUserControl(CheckChangePIN.Instance);
+                CheckChangePIN.Instance.clearTextBoxPin();
             }
             else if (state.Equals("Withdraw"))
             {
@@ -180,7 +284,16 @@ namespace GUI
 
         private void btnLeft4_Click(object sender, EventArgs e)
         {
-
+            if (state.Equals("ListService"))
+            {
+                addUserControl(PrintReceipt.Instance);
+                state = "PrintReceipt";
+            }
+            else if (state.Equals("PrintReceipt"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
         }
         #endregion
         #region btnRight
@@ -198,9 +311,21 @@ namespace GUI
             {
                 withdraw(1500000);
             }
+            else if (state.Equals("ListService"))
+            {
+                addUserControl(CashTransfer.Instance);
+                CashTransfer.Instance.HideLabel();
+                state = "CashTransferCard";
+
+                CashTransfer.Instance.clearTextBoxCardNo();
+                CashTransfer.Instance.clearTextBoxCardNoName();
+                CashTransfer.Instance.clearTextBoxCardNoTo();
+                CashTransfer.Instance.clearTextBoxCardNoToName();
+                CashTransfer.Instance.clearTextBoxMoney();
+            }
         }
 
-        private void btnRight3_Click(object sender, EventArgs e)
+        private async void btnRight3_Click(object sender, EventArgs e)
         {
             if (state.Equals("ValidateCard"))
             {
@@ -239,6 +364,103 @@ namespace GUI
                 clearTextBoxCardNo();
                 ValidatePin.Instance.clearTextBoxPin();
             }
+            else if (state.Equals("CheckBalance"))
+            {
+                Task delay = Task.Delay(3000);
+                addUserControl(ConfirmPrintReceipt.Instance);
+                delay.Wait();
+
+                addUserControl(OtherDeal.Instance);
+                state = "OtherDeal";
+                exportReceipt.exportBalance(getTextBoxCardNo(), "CheckBalance");
+            }
+            else if (state.Equals("OtherDeal"))
+            {
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("PrintReceiptComplete"))
+            {
+                PrintReceiptComplete.Instance.ClearPanel();
+                Task delay = Task.Delay(3000);
+                addUserControl(ReceiveReceipt.Instance);
+                delay.Wait();
+
+                addUserControl(OtherDeal.Instance);
+                state = "OtherDeal";
+                exportReceipt.exportReceipt1(getTextBoxCardNo(), "PrintReceiptCompelete");
+            }
+            else if (state.Equals("CashTransferCard"))
+            {
+                transfer();
+            }
+            else if (state.Equals("CashTransferEnterMoney"))
+            {
+                if (checkMoneyTransfer())
+                {
+                    Success.Instance.setLabelBalance(accountBUL.updateBalance(
+                    Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney()),
+                    CashTransfer.Instance.getTextBoxCardNo(),
+                    CashTransfer.Instance.getTextBoxCardNoTo(),
+                    3300) + "");
+                    createLog("LT002", "ATM001", CashTransfer.Instance.getTextBoxCardNo(),
+                        Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney()), "Chuyển khoản thành công", CashTransfer.Instance.getTextBoxCardNoTo());
+                    addUserControl(Success.Instance);
+                    state = "AgreeBill";
+                }
+                if (state.Equals("CashTransMoneyferFail2"))
+                {
+                    Fail.Instance.clearLabel1();
+                    Fail.Instance.clearLabel2();
+                    Fail.Instance.clearLabel3();
+
+                    Fail.Instance.setLabel1("Số tiền trong TK không đủ cho giao dịch rút tiền\n");
+                    Fail.Instance.setLabel2("\tSố dư hiện có trong tài khoản :\n" +
+                        accountBUL.getBalanceInt(CashTransfer.Instance.getTextBoxCardNo()));
+
+                    Fail.Instance.ShowErrorChangLog();
+                    addUserControl(Fail.Instance);
+                    state = "DisagreeBill2";
+                }
+            }
+            else if (state.Equals("AgreeBill"))
+            {
+                addUserControl(Bill.Instance);
+                exportReceipt.exportReceiptCashTransfer(
+                    CashTransfer.Instance.getTextBoxCardNo(),
+                    CashTransfer.Instance.getTextBoxCardNoName().Trim(),
+                    CashTransfer.Instance.getTextBoxCardNoTo(),
+                    CashTransfer.Instance.getTextBoxCardNoToName().Trim(),
+                    Convert.ToInt32(CashTransfer.Instance.getTextBoxMoney()));
+                await Task.Delay(3000);
+                addUserControl(OtherTransaction.Instance);
+
+                state = "AgreeTransaction";
+            }
+
+            else if (state.Equals("AgreeTransaction"))
+            {
+                CashTransfer.Instance.clearTextBoxCardNo();
+                CashTransfer.Instance.clearTextBoxCardNoName();
+                CashTransfer.Instance.clearTextBoxCardNoTo();
+                CashTransfer.Instance.clearTextBoxCardNoToName();
+                CashTransfer.Instance.clearTextBoxMoney();
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("CashTransMoneyferFail1"))
+            {
+                Fail.Instance.clearLabel1();
+                Fail.Instance.clearLabel2();
+                Fail.Instance.clearLabel3();
+                Fail.Instance.setLabel1("Xin lỗi, giao dịch không thành công");
+                Fail.Instance.setLabel2("Xin vui lòng kiểm tra lại");
+                Fail.Instance.setLabel3("(Không được phép chuyển tiền vào tài khoản USD)");
+
+                Fail.Instance.ShowErrorChangLog();
+                addUserControl(Fail.Instance);
+                state = "DisagreeBill1";
+            }
         }
 
         private void btnRight4_Click(object sender, EventArgs e)
@@ -247,31 +469,20 @@ namespace GUI
             if (state.Equals("ValidateCard"))
             {
                 clearTextBoxCardNo();
+                ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                ValidateCard.Instance.getlblExpiredDate().Visible = false;
             }
             // state validate PIN
             else if (state.Equals("ValidatePin"))
             {
-                ValidatePin.Instance.clearTextBoxPin();
                 ValidatePin.Instance.getlblBlockCard().Visible = false;
                 ValidatePin.Instance.getlblCheckPin().Visible = false;
 
-                if (!panelMain.Controls.Contains(ValidateCard.Instance))
-                {
-                    panelMain.Controls.Add(ValidatePin.Instance);
-                    ValidateCard.Instance.Dock = DockStyle.Fill;
-                    ValidateCard.Instance.BringToFront();
-                }
-                else
-                {
-                    ValidateCard.Instance.BringToFront();
-                }
+                addUserControl(ValidateCard.Instance);
+                ValidateCard.Instance.getlblChecCardNo().Visible = false;
+                ValidateCard.Instance.getlblExpiredDate().Visible = false;
                 clearTextBoxCardNo();
                 state = "ValidateCard";
-            }
-            else if (state.Equals("OtherTransaction"))
-            {
-                state = "ValidateCard";
-                addUserControl(ValidateCard.Instance);
             }
             else if (state.Equals("SuccessWithdraw"))
             {
@@ -282,6 +493,45 @@ namespace GUI
                 state = "ValidateCard";
                 clearTextBoxCardNo();
                 ValidatePin.Instance.clearTextBoxPin();
+            }
+            else if (state.Equals("DisagreeBill1") || state.Equals("DisagreeBill2")
+                || state.Equals("CashTransferEnterMoney") || state.Equals("CashTransferCard"))
+            {
+                CashTransfer.Instance.clearTextBoxCardNo();
+                CashTransfer.Instance.clearTextBoxCardNoName();
+                CashTransfer.Instance.clearTextBoxCardNoTo();
+                CashTransfer.Instance.clearTextBoxCardNoToName();
+                CashTransfer.Instance.clearTextBoxMoney();
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("AgreeBill"))
+            {
+                state = "ListService";
+                addUserControl(ListService.Instance);
+            }
+            else if (state.Equals("AgreeTransaction") || state.Equals("CheckBalance") ||
+                state.Equals("CheckChangePIN"))
+            {
+                state = "ListService";
+                addUserControl(ListService.Instance);
+            }
+            else if (state.Equals("OtherDeal"))
+            {
+                addUserControl(ValidateCard.Instance);
+                state = "ValidateCard";
+                clearTextBoxCardNo();
+            }
+            else if (state.Equals("PrintReceiptComplete"))
+            {
+                PrintReceiptComplete.Instance.ClearPanel();
+                addUserControl(ListService.Instance);
+                state = "ListService";
+            }
+            else if (state.Equals("OtherTransaction"))
+            {
+                state = "ValidateCard";
+                addUserControl(ValidateCard.Instance);
             }
         }
         #endregion
@@ -336,6 +586,7 @@ namespace GUI
             enterTextBox("0");
         }
         #endregion
+
         // Function Add User Control to FormMain
         private void addUserControl(UserControl userControl)
         {
@@ -349,6 +600,14 @@ namespace GUI
             {
                 userControl.BringToFront();
             }
+
+            if (userControl == ValidateCard.Instance)
+                txtCardNo.Enabled = true;
+            else
+                txtCardNo.Enabled = false;
+
+            if (userControl == ValidatePin.Instance)
+                ValidatePin.Instance.clearTextBoxPin();
         }
 
         // Function enter Number to Texbox
@@ -359,14 +618,16 @@ namespace GUI
                 setTextBoxCardNo(number);
             }
             else if (state.Equals("ValidatePin"))
+            {
                 ValidatePin.Instance.setTextBoxPin(number);
+            }
             else if (state.Equals("CheckChangePIN"))
             {
                 CheckChangePIN.Instance.setTextBoxPin(number);
             }
             else if (state.Equals("ChangePIN"))
             {
-                ChangePIN.Instance.setNewPIN(number);               
+                ChangePIN.Instance.setNewPIN(number);
             }
             else if (state.Equals("ConfirmChangePIN"))
             {
@@ -376,10 +637,11 @@ namespace GUI
                 CustomWithDraw.Instance.setTextBoxCustomWithDrawn(number);
         }
 
+
         // Function check CardNo
         private void checkCardNo()
         {
-            string cardNo =getTextBoxCardNo();
+            string cardNo = getTextBoxCardNo();
             bool checkSuccess = cardBUL.checkCardNo(cardNo);
             if (checkSuccess)
             {
@@ -408,7 +670,7 @@ namespace GUI
         // Function check Pin
         private void checkPIN()
         {
-            string cardNo =getTextBoxCardNo();
+            string cardNo = getTextBoxCardNo();
             string pin = ValidatePin.Instance.getTextBoxPin();
 
             bool checkPin = cardBUL.getPIN(cardNo, pin);
@@ -424,7 +686,6 @@ namespace GUI
             {
                 state = "CardBlock";
                 addUserControl(CardBlock.Instance);
-
                 Thread.Sleep(3000);
                 state = "ValidateCard";
                 addUserControl(ValidateCard.Instance);
@@ -434,18 +695,15 @@ namespace GUI
                 cardBUL.updateAttemptStatus(cardNo, false);
                 state = "CheckPINFail";
                 addUserControl(CheckPINFail.Instance);
-
                 Thread.Sleep(3000);
                 state = "ValidatePin";
                 addUserControl(ValidatePin.Instance);
-
                 ValidatePin.Instance.clearTextBoxPin();
             }
             else
             {
                 state = "CardBlockPinFail";
                 addUserControl(CardBlockPinFail.Instance);
-
                 Thread.Sleep(3000);
                 state = "ValidateCard";
                 addUserControl(ValidateCard.Instance);
@@ -457,27 +715,24 @@ namespace GUI
         {
             string cardNo = getTextBoxCardNo();
             string pin = CheckChangePIN.Instance.getTextBoxPin();
-
             bool checkPin = cardBUL.getPIN(cardNo, pin);
 
             if (checkPin)
             {
                 state = "ChangePIN";
                 addUserControl(ChangePIN.Instance);
+                ChangePIN.Instance.clearNewPIN();
             }
-
             else if (!checkPin)
             {
                 CheckChangePIN.Instance.getlblCheckPin().Visible = true;
                 CheckChangePIN.Instance.clearTextBoxPin();
-
             }
         }
 
         private void confirmChangePIN()
         {
             string pin = ChangePIN.Instance.getNewPIN();
-           
             if (pin.Length == 6)
             {
                 state = "ConfirmChangePIN";
@@ -491,7 +746,6 @@ namespace GUI
                 ChangePIN.Instance.getcheckLB6so();
                 ChangePIN.Instance.clearNewPIN();
             }
-
         }
 
         private void changePIN()
@@ -499,23 +753,22 @@ namespace GUI
             string cardNo = getTextBoxCardNo();
             string confirmPin = ConfirmChangePIN.Instance.getNewPIN();
             string pin = ChangePIN.Instance.getNewPIN();
-            
             bool changePin = cardBUL.changePIN(cardNo, confirmPin);
             if (changePin && confirmPin.Length == 6 && pin == confirmPin)
             {
                 state = "ChangePINSuccess";
                 addUserControl(ChangePINSuccess.Instance);
+                ChangePIN.Instance.clearNewPIN();
                 createLog("LT004", "ATM001", getTextBoxCardNo(), 0, "Đổi pin thành công", "");
-
                 Thread.Sleep(3000);
                 state = "OtherTransaction";
                 addUserControl(OtherTransaction.Instance);
             }
-            else if(changePin && confirmPin.Length == 6 && pin != confirmPin)
+            else if (changePin && confirmPin.Length == 6 && pin != confirmPin)
             {
                 state = "ChangePIN";
                 addUserControl(ChangePIN.Instance);
-                ChangePIN.Instance.getPinFail();                   
+                ChangePIN.Instance.getPinFail();
                 ChangePIN.Instance.clearNewPIN();
             }
             else if (changePin && confirmPin.Length != 6 && pin != confirmPin)
@@ -531,10 +784,11 @@ namespace GUI
                 addUserControl(ChangePIN.Instance);
                 ChangePIN.Instance.getcheckLB6so();
                 ChangePIN.Instance.clearNewPIN();
-            }                       
+            }
         }
 
         // function to create log
+
         private void createLog(string logType, string atmId, string cardNo, decimal amount, string details, string cardTo)
         {
             logBUL.createLog(logType, atmId, cardNo, amount, details, cardTo);
@@ -542,12 +796,12 @@ namespace GUI
 
         // Function Withdraw
         private void withdraw(int money)
-        {  
+        {
             string cardNo = getTextBoxCardNo();
             bool checkMaxWithDraw = configBUL.getMaxWithDraw(money);        //trong bảng Config
             bool checkBalanceAndOD = accountBUL.checkBalanceAndOverDraft(cardNo, money);    // trong bảng OverDraft
             bool checkWithdrawLimit = withdrawLimitBUL.checkWithdrawLimit("LT001", "ATM001", cardNo, money); // trong bảng Withdraw Limit
-            
+
             if (!checkMaxWithDraw)  // Vượt quá số tiền hệ thống / 1 lần rút
             {
                 Task delay = Task.Delay(5000);
@@ -611,6 +865,90 @@ namespace GUI
                 }
             }
             state = "Withdraw";
+        }
+
+        // Function Transfer
+        private void transfer()
+        {
+            bool checkCardNo = cardBUL.checkCurrentCardNo(CashTransfer.Instance.getTextBoxCardNo(), getTextBoxCardNo());
+            bool checkCardNoTo = cardBUL.checkCardNo(CashTransfer.Instance.getTextBoxCardNoTo());
+
+            if (!checkCardNo || !checkCardNoTo)
+            {
+                CashTransfer.Instance.setTextBoxCardNoToName("Tên tài khoản không hợp lệ");
+                CashTransfer.Instance.setTextBoxCardNoName("Tên tài khoản không hợp lệ");
+                string nameCardNoTo = customerBUL.getNameCustomer(CashTransfer.Instance.getTextBoxCardNoTo().Trim());
+                CashTransfer.Instance.setTextBoxCardNoToName(nameCardNoTo);
+                CashTransfer.Instance.ShowLabel();
+
+                if (CashTransfer.Instance.getTextBoxCardNo() != null
+                && CashTransfer.Instance.getTextBoxCardNoTo() != null
+                && CashTransfer.Instance.getTextBoxCardNoToName() != null)
+                {
+                    CashTransfer.Instance.ShowImage();
+                    string textboxMoney = CashTransfer.Instance.getTextBoxMoney();
+                    if (textboxMoney != null)
+                    {
+                        state = "CashTransMoneyferFail1";
+                    }
+                }
+            }
+            else
+            {
+                if (CashTransfer.Instance.getTextBoxCardNo() != null
+                && CashTransfer.Instance.getTextBoxCardNoName() != null
+                && CashTransfer.Instance.getTextBoxCardNoName() != null
+                && CashTransfer.Instance.getTextBoxCardNoTo() != null)
+                {
+                    string nameCardNo = customerBUL.getNameCustomer(CashTransfer.Instance.getTextBoxCardNo().Trim());
+                    string nameCardNoTo = customerBUL.getNameCustomer(CashTransfer.Instance.getTextBoxCardNoTo().Trim());
+                    CashTransfer.Instance.setTextBoxCardNoName(nameCardNo);
+                    CashTransfer.Instance.setTextBoxCardNoToName(nameCardNoTo);
+                    CashTransfer.Instance.ShowLabel();
+                    CashTransfer.Instance.ShowImage();
+                    state = "CashTransferEnterMoney";
+                }
+            }
+        }
+
+        // Function check money transfer
+        private bool checkMoneyTransfer()
+        {
+            if (CashTransfer.Instance.getTextBoxMoney() != null
+                && CashTransfer.Instance.getTextBoxCardNoToName() != null)
+            {
+                try
+                {
+                    string tbMoney = CashTransfer.Instance.getTextBoxMoney();
+                    int money = Convert.ToInt32(tbMoney);
+                    string cardNo = CashTransfer.Instance.getTextBoxCardNo();
+                    bool checkMoney = accountBUL.compareBalance(money, cardNo);
+
+                    if (!checkMoney)
+                    {
+                        state = "CashTransMoneyferFail2";
+                        return false;
+                    }
+                    else
+                    {
+                        state = "CashTransferMoneySuccess";
+                        return true;
+                    }
+                }
+                catch
+                {
+                    state = "CashTransMoneyferFail2";
+                    return false;
+                }
+            }
+            else
+                state = "CashTransMoneyferFai2";
+            return false;
+        }
+
+        private void txtCardNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
         }
     }
 }

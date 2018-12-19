@@ -29,5 +29,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void ListService_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

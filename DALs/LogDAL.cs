@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
+using DTOs;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Windows.Forms;
+
 namespace DALs
 {
    public class LogDAL
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString());
+
         private string getLogID()
         {
             try
@@ -29,6 +32,7 @@ namespace DALs
                 return "";
             }
         }
+        
         public void createLog( string logType, string atmID, string cardNo, DateTime logDate, decimal amount, string details, string cardNoTo)
         {
             string logId = getLogID();
@@ -55,6 +59,31 @@ namespace DALs
                 conn.Close();
                 return;
             }
+        }
+        public List<LogDTO> LoadLogList(string cardNo)
+        {
+            List<LogDTO> logList = new List<LogDTO>();
+            DataTable data = new DataTable();
+            try
+            {
+                conn.Open();
+                string query = "Select top 5 * from Log where CardNo = @cardNo order by LogDate desc";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(data);
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                conn.Close();
+            }
+            foreach (DataRow item in data.Rows)
+            {
+                LogDTO logDTO = new LogDTO(item);
+                logList.Add(logDTO);
+            }
+            return logList; 
         }
 
         public int getTotalAmount(string logTypeID, string atmID, string cardNo, string startDate, string endDate)

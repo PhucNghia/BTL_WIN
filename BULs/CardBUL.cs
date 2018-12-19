@@ -12,6 +12,11 @@ namespace BULs
     {
         CardDAL cardDAL = new CardDAL();
         // Validate CardNo
+        public bool checkCurrentCardNo(string cardNo, string currentCardNo)
+        {
+            return cardDAL.checkCurrentCardNo(cardNo, currentCardNo);
+        }
+
         public bool checkCardNo(string cardNo)
         {
             return cardDAL.checkCardNo(cardNo);
@@ -82,6 +87,7 @@ namespace BULs
             else
                 return false;
         }
+
         public bool changePIN(string cardNo, string newPIN)
         {
             return cardDAL.changePIN(cardNo, newPIN);

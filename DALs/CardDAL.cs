@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using DTO;
+using DTOs;
 
 namespace DALs
 {
@@ -15,6 +15,41 @@ namespace DALs
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString());
 
         // Validate CardNo
+        public bool checkCurrentCardNo(string cardNo, string currentCardNo)
+        {
+            try
+            {
+                conn.Open();
+                CardDTO cardDTO = null;
+                string sql = "select * from Card where @currentCardNo = @cardNo";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("currentCardNo", currentCardNo);
+                cmd.Parameters.AddWithValue("cardNo", cardNo);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cardDTO = new CardDTO(
+                        dr["CardNo"].ToString(),
+                        dr["Status"].ToString(),
+                        dr["AccountID"].ToString(),
+                        dr["PIN"].ToString(),
+                        dr["StartDate"].ToString(),
+                        dr["ExpiredDate"].ToString(),
+                        int.Parse(dr["Attempt"].ToString()));
+                }
+                conn.Close();
+                if (cardDTO == null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return false;
+            }
+        }
+
         public bool checkCardNo(string cardNo)
         {
             try

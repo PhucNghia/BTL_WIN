@@ -48,6 +48,7 @@
     <Compile Include="AccountBUL.cs" />
     <Compile Include="CardBUL.cs" />
     <Compile Include="ExportReceipt.cs" />
+    <Compile Include="CustomerBUL.cs" />
     <Compile Include="LogBUL.cs" />
     <Compile Include="ConfigBUL.cs" />
     <Compile Include="MoneyBUL.cs" />
@@ -61,6 +62,13 @@
       <Project>{41ff78aa-2a5b-4427-88a1-bca2cb09cd56}</Project>
       <Name>DALs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTOs\DTOs.csproj">
+      <Project>{2e1fb0e6-f71d-438d-a376-685876b1f798}</Project>
+      <Name>DTOs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
